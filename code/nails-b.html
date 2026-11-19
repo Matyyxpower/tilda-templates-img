@@ -1,0 +1,135 @@
+<section class="block" id="book"><div class="wrap book">
+  <div class="reveal">
+    <h2 class="h2">Как нас найти</h2>
+    <p class="shade-line" id="shadeLine"></p>
+    <div class="cta" id="bookCta"></div>
+    <dl id="contactList"></dl>
+  </div>
+  <div class="map reveal"><iframe id="map" title="Карта" loading="lazy"></iframe></div>
+</div></section>
+
+<footer><div class="wrap" id="foot"></div></footer>
+<nav class="bar" id="bar"></nav>
+
+<script>
+(function(){
+  const S = SITE, $ = id => document.getElementById(id);
+  const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+  const tel = "tel:" + S.phone.replace(/[^\d+]/g, "");
+  const icoTg = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 3-9.5 18-2.5-8L2 10.5z"/><path d="m10 13 4-4"/></svg>';
+  const icoWa = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 21l2.1-5.4A8.4 8.4 0 1 1 21 11.5z"/></svg>';
+  const icoPhone = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>';
+
+  document.title = S.kind + " «" + S.name + "»";
+  $("demo").textContent = S.demoNote;
+  const logo = S.logo === "placeholder" ? '<span class="logo-ph">Ваш<br>логотип</span>'
+             : S.logo ? '<img class="logo-img" src="' + esc(S.logo) + '" alt="">' : "";
+  $("brand").innerHTML = logo + "<span><b>" + esc(S.name) + "</b><small>" + esc(S.kind) + "</small></span>";
+  $("topPhone").href = tel; $("topPhone").textContent = S.phone;
+  $("kind").textContent = S.kind + " в Нижнем Новгороде";
+  $("h1").textContent = S.name;
+  $("lead").textContent = S.tagline;
+
+  // флаконы
+  const bottleSVG = c =>
+    '<svg viewBox="0 0 60 104" aria-hidden="true">' +
+      '<rect x="20" y="0" width="20" height="34" rx="4" fill="#2f231d"/>' +
+      '<rect x="22.5" y="3" width="3" height="27" rx="1.5" fill="#fff" opacity=".18"/>' +
+      '<rect x="16" y="32" width="28" height="8" rx="2" fill="#2f231d"/>' +
+      '<path class="body" d="M10 46c0-4 3-7 7-7h26c4 0 7 3 7 7v46c0 6-5 11-11 11H21c-6 0-11-5-11-11z" fill="' + c + '"/>' +
+      '<path d="M10 46c0-4 3-7 7-7h26c4 0 7 3 7 7v46c0 6-5 11-11 11H21c-6 0-11-5-11-11z" fill="none" stroke="rgba(0,0,0,.14)"/>' +
+      '<path d="M15 50c0-3 2-5 5-5h2v50h-1c-3 0-6-3-6-6z" fill="#fff" opacity=".32"/>' +
+      '<rect x="38" y="48" width="4" height="22" rx="2" fill="#fff" opacity=".2"/>' +
+    '</svg>';
+  $("bottles").innerHTML = S.shades.map(s =>
+    '<button class="bottle" type="button" data-key="' + s.key + '" aria-pressed="false" aria-label="' + esc(s.label) + '">' +
+    bottleSVG(s.color) + '<span>' + esc(s.label) + '</span></button>').join("");
+
+  // фото рук
+  const shot = $("shot");
+  S.shades.forEach(s => shot.insertAdjacentHTML("afterbegin",
+    '<img data-key="' + s.key + '" src="' + esc(s.photo) + '" alt="Маникюр, оттенок ' + esc(s.label) + '" onerror="this.remove()" onload="this.parentNode.classList.add(\'loaded\')">'));
+  shot.insertAdjacentHTML("afterbegin", '<div class="ph">Фото маникюра</div>');
+
+  let current = S.shades[0];
+  const waLink = () => S.whatsapp ? "https://wa.me/" + S.whatsapp + "?text=" + encodeURIComponent(bookText()) : "";
+  const tgLink = () => S.telegram ? "https://t.me/" + S.telegram : "";
+  const bookText = () => "Здравствуйте! Хочу записаться на маникюр, понравился оттенок «" + current.label + "».";
+
+  function renderCtas(){
+    const tg = tgLink(), wa = waLink();
+    const html = (tg ? '<a class="btn solid" href="' + tg + '" target="_blank" rel="noopener" data-copy>' + icoTg + '<span>Записаться<span class="long"> в Telegram</span></span></a>' : "") +
+                 (wa ? '<a class="btn" href="' + wa + '" target="_blank" rel="noopener">' + icoWa + 'WhatsApp</a>' : "");
+    $("heroCta").innerHTML = '<a class="btn solid" href="#zapis">Записаться онлайн</a>' + (wa ? '<a class="btn" href="' + wa + '" target="_blank" rel="noopener">' + icoWa + 'WhatsApp</a>' : "");
+    $("bookCta").innerHTML = html + '<a class="btn" href="' + tel + '">' + icoPhone + 'Позвонить</a>';
+    $("bar").innerHTML = '<a href="#zapis">Записаться</a>' +
+                         (wa ? '<a class="alt" href="' + wa + '" target="_blank" rel="noopener">' + icoWa + 'WhatsApp</a>' : "");
+    $("shadeLine").innerHTML = "Выбранный оттенок: <b>" + esc(current.label) + "</b>. Он подставится в сообщение" + (tg ? ", а для Telegram скопируется, останется вставить." : ".");
+  }
+  // Telegram не умеет подставлять текст, поэтому копируем его в буфер
+  document.addEventListener("click", e => {
+    if (e.target.closest("[data-copy]") && navigator.clipboard) navigator.clipboard.writeText(bookText()).catch(() => {});
+  });
+
+  const still = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let swapTimer = 0;
+  function showPhoto(key){
+    const next = shot.querySelector('img[data-key="' + key + '"]');
+    const cur = shot.querySelector("img.on");
+    if (!next || next === cur) return;
+    const finish = () => {
+      shot.querySelectorAll("img").forEach(i => { i.classList.remove("in", "go"); i.classList.toggle("on", i === next); });
+    };
+    clearTimeout(swapTimer);
+    if (!cur || still) { finish(); return; }
+    shot.querySelectorAll("img.in").forEach(i => { if (i !== next) i.classList.remove("in", "go"); });
+    next.classList.remove("go"); next.classList.add("in");
+    requestAnimationFrame(() => requestAnimationFrame(() => next.classList.add("go")));
+    swapTimer = setTimeout(finish, 1050);
+  }
+  function setShade(key){
+    current = S.shades.find(s => s.key === key) || S.shades[0];
+    const r = document.documentElement.style;
+    r.setProperty("--accent", current.accent || current.color);
+    r.setProperty("--accent-ink", current.accent ? "#fff" : current.ink);
+    showPhoto(current.key);
+    $("bottles").querySelectorAll(".bottle").forEach(b => b.setAttribute("aria-pressed", b.dataset.key === current.key));
+    r.setProperty("--shade", current.color);
+    const chip = $("chipName");
+    if (chip.textContent && chip.textContent !== current.label) {
+      chip.classList.add("fade");
+      setTimeout(() => { chip.textContent = current.label; chip.classList.remove("fade"); }, 250);
+    } else chip.textContent = current.label;
+    renderCtas();
+  }
+  $("bottles").addEventListener("click", e => { const b = e.target.closest(".bottle"); if (b) setShade(b.dataset.key); });
+  setShade(S.shades[0].key);
+
+  // прайс
+  $("priceList").innerHTML = S.prices.map(g => '<div class="card reveal"><h3>' + esc(g.group) + '</h3>' +
+    g.items.map(r => '<div class="row"><span>' + esc(r[0]) + '</span><i></i><b>' + esc(r[1]) + '</b></div>').join("") + '</div>').join("");
+
+  // работы
+  const works = S.works.length ? S.works : S.shades.map(s => s.photo);
+  $("works").innerHTML = works.slice(0, 5).map(src =>
+    '<figure><img src="' + esc(src) + '" alt="Работа мастера" loading="lazy" onerror="this.parentNode.innerHTML=\'<div class=ph>Фото работы</div>\'"></figure>').join("");
+
+  $("hyg").innerHTML = S.hygiene.map(h => '<div class="reveal"><h3>' + esc(h[0]) + '</h3><p>' + esc(h[1]) + '</p></div>').join("");
+
+  $("masters").innerHTML = S.masters.map(m => '<div class="mcard reveal"><div class="ph2"><img src="' + esc(m[3]) + '" alt="Мастер ' + esc(m[0]) + '" loading="lazy"></div><div class="t"><h3>' + esc(m[0]) + '</h3><p>' + esc(m[1]) + '</p><b>' + esc(m[2]) + '</b></div></div>').join("");
+
+  $("rating").innerHTML = "<b>" + esc(S.rating) + "</b><span>на Яндекс Картах, " + esc(S.ratingCount) + "</span>";
+  $("reviews").innerHTML = S.reviews.map(r => '<figure class="review reveal"><blockquote>' + esc(r[0]) + '</blockquote><cite>' + esc(r[1]) + '</cite></figure>').join("");
+
+  $("contactList").innerHTML = "<dt>Адрес</dt><dd>" + esc(S.address) + "</dd><dt>Часы</dt><dd>" + esc(S.hours) +
+    '</dd><dt>Телефон</dt><dd><a href="' + tel + '">' + esc(S.phone) + '</a></dd>';
+  $("map").src = S.mapEmbed;
+  $("foot").textContent = S.kind + " «" + S.name + "», " + S.address;
+
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }),
+    { rootMargin: "0px 0px -8% 0px" });
+  document.querySelectorAll(".reveal").forEach(el => io.observe(el));
+  const bar = $("bar");
+  new IntersectionObserver(([e]) => bar.classList.toggle("show", !e.isIntersecting), { threshold: .1 }).observe(document.querySelector(".hero"));
+})();
+</script>

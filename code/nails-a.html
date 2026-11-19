@@ -1,0 +1,314 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;1,500&family=Golos+Text:wght@400;500;600&display=swap" rel="stylesheet">
+<script>
+/* ============================================================
+   НАСТРОЙКИ ПОД КЛИЕНТА — меняем только этот блок
+   ============================================================ */
+const SITE = {
+  name: "Лак и Лён",
+  kind: "Студия маникюра",
+  tagline: "Аккуратный маникюр с покрытием, которое держится до четырёх недель. Четыре мастера, стерильные инструменты и запись онлайн за минуту.",
+  phone: "+7 (900) 000-00-00",
+  telegram: "username",                 // ник без @; "" — кнопку не показываем
+  whatsapp: "79000000000",              // только цифры; "" — кнопку не показываем
+  address: "Нижний Новгород, ул. Примерная, 1",
+  hours: "Ежедневно с 10:00 до 21:00, по записи",
+  rating: "5,0",
+  ratingCount: "312 оценок",
+  mapUrl: "https://yandex.ru/maps/47/nizhny-novgorod/",
+  mapEmbed: "https://yandex.ru/map-widget/v1/?ll=43.936%2C56.296&z=12",
+  demoNote: "Шаблон сайта. Название, цены, мастера и отзывы указаны для примера.",
+  logo: "placeholder",                  // "https://nails-lak-and-len.netlify.app/img/logo.png", "placeholder" — место «Ваш логотип», "" — без логотипа
+
+  // оттенки для палитры на первом экране: photo — фото руки этим цветом
+  shades: [
+    { key: "nude",     label: "Нюд",      color: "#c8a086", ink: "#2c1d15", photo: "https://nails-lak-and-len.netlify.app/img/nude.jpg" },
+    { key: "red",      label: "Красный",  color: "#b4232c", ink: "#fff",    photo: "https://nails-lak-and-len.netlify.app/img/red.jpg" },
+    { key: "burgundy", label: "Бордо",    color: "#6c1c2c", ink: "#fff",    photo: "https://nails-lak-and-len.netlify.app/img/burgundy.jpg" },
+    { key: "pink",     label: "Розовый",  color: "#e48daf", ink: "#2c1d15", photo: "https://nails-lak-and-len.netlify.app/img/pink.jpg" },
+    { key: "milk",     label: "Белый",    color: "#f6f3ee", ink: "#2c1d15", photo: "https://nails-lak-and-len.netlify.app/img/milk.jpg", accent: "#9b8270" }
+  ],
+
+  prices: [
+    { group: "Маникюр", items: [
+      ["Маникюр без покрытия", "800 ₽"],
+      ["Маникюр с покрытием гель-лаком", "1 800 ₽"],
+      ["Укрепление базой", "+ 300 ₽"],
+      ["Наращивание", "от 2 800 ₽"] ]},
+    { group: "Педикюр", items: [
+      ["Педикюр без покрытия", "1 500 ₽"],
+      ["Педикюр с покрытием", "2 300 ₽"],
+      ["Покрытие пальчиков", "1 200 ₽"] ]},
+    { group: "Дизайн и снятие", items: [
+      ["Френч", "+ 400 ₽"],
+      ["Дизайн на 2 ногтях", "+ 200 ₽"],
+      ["Снятие покрытия", "200 ₽"],
+      ["Ремонт одного ногтя", "150 ₽"] ]}
+  ],
+
+  hygiene: [
+    ["Крафт-пакет при вас", "Инструменты проходят стерилизацию, пакет вскрываю при вас."],
+    ["Сухожар", "Металлические инструменты обрабатываются в сухожаре по нормам СанПиН."],
+    ["Одноразовое", "Пилки, бафы и салфетки у каждой клиентки новые."]
+  ],
+
+
+  works: ["https://cdn.jsdelivr.net/gh/Matyyxpower/tilda-templates-img@main/nails/work1.jpg","https://cdn.jsdelivr.net/gh/Matyyxpower/tilda-templates-img@main/nails/work2.jpg","https://cdn.jsdelivr.net/gh/Matyyxpower/tilda-templates-img@main/nails/work3.jpg","https://cdn.jsdelivr.net/gh/Matyyxpower/tilda-templates-img@main/nails/work4.jpg","https://nails-lak-and-len.netlify.app/img/nude.jpg"],
+  masters: [
+    ["Анна", "Старший мастер, 6 лет", "Френч и нюд, аккуратная форма", "https://cdn.jsdelivr.net/gh/Matyyxpower/tilda-templates-img@main/nails/master1.jpg"],
+    ["Ольга", "Мастер, 9 лет", "Укрепление и сложные ногти", "https://cdn.jsdelivr.net/gh/Matyyxpower/tilda-templates-img@main/nails/master2.jpg"],
+    ["Дарья", "Нейл-артист, 3 года", "Дизайн, втирки, роспись", "https://cdn.jsdelivr.net/gh/Matyyxpower/tilda-templates-img@main/nails/master3.jpg"]
+  ],                             // фото работ: ["https://nails-lak-and-len.netlify.app/img/w1.jpg", ...]; пусто — берём фото из палитры
+
+  reviews: [
+    ["Хожу к Анне второй год. Покрытие держится по три-четыре недели, ни одного скола.", "Мария"],
+    ["Дарья сделала роспись по моей картинке — подруги не верили, что это не наклейки.", "Екатерина"],
+    ["Записалась через сайт за минуту, администратор сразу перезвонил. Очень чисто и спокойно.", "Ольга"]
+  ]
+};
+</script>
+<style>
+:root{
+  --bg:#e9dfd4; --bg2:#e1d5c8; --paper:#f2ebe3; --line:#cdbdad;
+  --ink:#3a281f; --muted:#7b6457;
+  --accent:#c8a086; --accent-ink:#2c1d15;
+  --serif:"Lora",Georgia,serif; --sans:"Golos Text",system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--ink);font:400 17px/1.6 var(--sans);overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--ink);outline-offset:3px;border-radius:6px}
+.wrap{width:min(1160px,100% - 40px);margin-inline:auto}
+.demo{background:var(--ink);color:var(--paper);font:500 13px/1.4 var(--sans);text-align:center;padding:7px 16px}
+
+/* шапка */
+.top{padding:20px 0}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.brand b{display:block;font:600 21px/1.1 var(--serif)}
+.brand small{display:block;font:500 13px/1.2 var(--sans);color:var(--muted);margin-top:3px}
+.logo-ph{display:grid;place-items:center;width:46px;height:46px;flex:none;border-radius:50%;border:1.5px dashed var(--muted);
+  color:var(--muted);text-align:center;font:600 9px/1.15 var(--sans)}
+.logo-img{width:46px;height:46px;object-fit:contain;flex:none}
+.top-phone{font:600 16px/1 var(--sans);text-decoration:none;white-space:nowrap}
+
+/* кнопки */
+.btn{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:16px 26px;border-radius:999px;
+  font:600 16px/1 var(--sans);text-decoration:none;cursor:pointer;overflow:hidden;isolation:isolate;border:1.5px solid var(--ink);
+  color:var(--ink);background:transparent;transition:color .35s,background-color .6s,border-color .6s,transform .15s}
+.btn::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--ink);transform:translateY(101%);transition:transform .4s cubic-bezier(.7,0,.2,1)}
+.btn:hover{color:var(--paper)}
+.btn:hover::before{transform:none}
+.btn:active{transform:scale(.96)}
+.btn svg{width:18px;height:18px;flex:none}
+.btn.solid{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.btn.solid:hover{color:var(--paper)}
+
+/* первый экран */
+.hero{padding:10px 0 clamp(60px,8vw,110px)}
+.hero .wrap{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,6vw,90px);align-items:center}
+.hero h1{font:500 clamp(40px,5.6vw,78px)/1.04 var(--serif);letter-spacing:-.01em;margin-bottom:22px}
+.hero .kind{font:500 15px/1.3 var(--sans);color:var(--muted);margin-bottom:16px}
+.hero .lead{color:var(--muted);max-width:30em;margin-bottom:34px}
+.cta{display:flex;flex-wrap:wrap;gap:12px}
+
+.shot{position:relative;aspect-ratio:4/5;border-radius:28px;overflow:hidden;background:var(--bg2);box-shadow:0 30px 60px -30px rgba(58,40,31,.45)}
+@property --r{syntax:"<percentage>";inherits:false;initial-value:0%}
+.shot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;z-index:1}
+.shot img.on{opacity:1;z-index:2}
+/* новый цвет «растекается» от ногтей мягким кругом */
+.shot img.in{opacity:1;z-index:3;
+  -webkit-mask-image:radial-gradient(circle at 55% 70%,#000 var(--r),transparent calc(var(--r) + 16%));
+          mask-image:radial-gradient(circle at 55% 70%,#000 var(--r),transparent calc(var(--r) + 16%));
+  transition:--r 1s cubic-bezier(.45,0,.2,1)}
+.shot img.in.go{--r:130%}
+.shot.loaded .ph{display:none}
+.shot .ph{position:absolute;inset:0;display:grid;place-items:center;color:var(--muted);font-size:15px;
+  background:radial-gradient(120% 90% at 30% 20%,var(--paper),var(--bg2))}
+.shot .chip{position:absolute;left:18px;bottom:18px;z-index:5;display:flex;align-items:center;gap:10px;padding:10px 16px 10px 10px;
+  border-radius:999px;background:rgba(242,235,227,.88);backdrop-filter:blur(8px);font:600 15px/1 var(--sans)}
+.shot .chip i{width:22px;height:22px;border-radius:50%;background:var(--shade,var(--accent));box-shadow:inset 0 0 0 1px rgba(0,0,0,.15);transition:background-color .6s}
+.shot .chip span{transition:opacity .25s ease}
+.shot .chip span.fade{opacity:0}
+
+/* палитра флаконов */
+.palette{margin:0 0 34px}
+.palette p{font-size:15px;color:var(--muted);margin-bottom:12px}
+.bottles{display:flex;gap:clamp(8px,1.6vw,18px);align-items:flex-end}
+.bottle{position:relative;width:clamp(48px,5vw,62px);padding:0;border:0;background:none;cursor:pointer;
+  transition:transform .45s cubic-bezier(.3,1.5,.5,1)}
+.bottle svg{display:block;width:100%;height:auto;overflow:visible}
+.bottle .body{transition:filter .3s}
+.bottle:hover{transform:translateY(-6px) rotate(-3deg)}
+.bottle[aria-pressed="true"]{transform:translateY(-14px)}
+.bottle span{position:absolute;left:50%;top:100%;transform:translateX(-50%);margin-top:8px;font:500 13px/1 var(--sans);white-space:nowrap;
+  color:var(--muted);opacity:0;transition:opacity .3s}
+.bottle[aria-pressed="true"] span,.bottle:hover span{opacity:1}
+.bottle[aria-pressed="true"] span{color:var(--ink)}
+
+/* секции */
+section.block{padding:clamp(70px,9vw,120px) 0}
+section.alt{background:var(--bg2)}
+.h2{font:500 clamp(32px,4vw,52px)/1.08 var(--serif);margin-bottom:14px}
+.sub{color:var(--muted);max-width:34em;margin-bottom:clamp(34px,5vw,56px)}
+.u{background:linear-gradient(var(--accent),var(--accent)) 0 92%/100% .14em no-repeat;transition:background-image .6s}
+
+/* прайс */
+.prices{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.card{background:var(--paper);border-radius:22px;padding:28px 26px 18px}
+.card h3{font:500 24px/1.2 var(--serif);margin-bottom:12px}
+.row{display:flex;align-items:baseline;gap:10px;padding:12px 0;border-bottom:1px solid var(--line);font-size:16px}
+.row:last-child{border-bottom:0}
+.row span{flex:none;max-width:68%}
+.row i{flex:1;border-bottom:1px dotted var(--line);transform:translateY(-5px)}
+.row b{flex:none;font-weight:600;white-space:nowrap}
+
+/* работы */
+.works{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.works figure{aspect-ratio:4/5;border-radius:18px;overflow:hidden;background:var(--paper)}
+.works figure:first-child{grid-column:span 2;grid-row:span 2;aspect-ratio:auto}
+.works img{width:100%;height:100%;object-fit:cover;transition:transform 1s cubic-bezier(.2,.7,.2,1)}
+.works figure:hover img{transform:scale(1.04)}
+.works .ph{width:100%;height:100%;display:grid;place-items:center;color:var(--muted);font-size:14px}
+
+/* стерильность */
+.hyg{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.hyg div{border-top:1.5px solid var(--ink);padding-top:20px}
+.hyg h3{font:500 22px/1.25 var(--serif);margin-bottom:8px}
+.hyg p{color:var(--muted);font-size:16px}
+
+
+.master{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(30px,6vw,80px);align-items:center}
+.master .photo{aspect-ratio:4/5;border-radius:28px;overflow:hidden;background:var(--paper);display:grid;place-items:center;color:var(--muted)}
+.master .photo img{width:100%;height:100%;object-fit:cover}
+.master p.text{font:500 clamp(20px,2vw,24px)/1.5 var(--serif);margin-bottom:30px}
+.facts{display:grid;grid-template-columns:repeat(3,auto);justify-content:start;gap:12px 40px}
+.facts dt{font-size:14px;color:var(--muted)}
+.facts dd{font:600 18px/1.3 var(--sans)}
+
+/* отзывы */
+.masters{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.mcard{background:var(--paper);border-radius:22px;overflow:hidden}
+.mcard .ph2{aspect-ratio:4/5;background:var(--bg2);overflow:hidden}
+.mcard img{width:100%;height:100%;object-fit:cover}
+.mcard div.t{padding:20px 22px 24px}
+.mcard h3{font:500 24px/1.2 var(--serif)}
+.mcard p{color:var(--muted);font-size:15px;margin-top:4px}
+.mcard b{display:block;font:600 15px/1.3 var(--sans);margin-top:10px}
+.promo{display:inline-block;background:var(--ink);color:var(--paper);font:600 14px/1 var(--sans);padding:9px 14px;border-radius:999px;margin-bottom:18px}
+.reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.review{background:var(--paper);border-radius:22px;padding:28px}
+.review blockquote{font:500 19px/1.5 var(--serif);margin-bottom:16px}
+.review cite{font-style:normal;color:var(--muted);font-size:15px}
+.rating{display:flex;align-items:baseline;gap:14px;margin-bottom:40px}
+.rating b{font:500 64px/1 var(--serif)}
+.rating span{color:var(--muted)}
+
+/* запись */
+.book{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
+.book .h2{font-size:clamp(38px,5vw,64px)}
+.book .shade-line{margin:6px 0 26px;color:var(--muted)}
+.book .shade-line b{color:var(--ink)}
+.book dl{display:grid;grid-template-columns:auto 1fr;gap:10px 24px;margin-top:34px}
+.book dt{color:var(--muted)}
+.map{border-radius:22px;overflow:hidden;aspect-ratio:4/3;background:var(--paper)}
+.map iframe{width:100%;height:100%;border:0;filter:sepia(.25) saturate(.8)}
+footer{padding:30px 0 110px;color:var(--muted);font-size:14px;border-top:1px solid var(--line)}
+
+/* липкая панель на телефоне */
+.bar{position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:20;display:none;gap:8px;
+  transform:translateY(160%);transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.bar.show{transform:none}
+.bar a{flex:1;display:flex;align-items:center;justify-content:center;gap:8px;padding:16px 10px;border-radius:999px;font:600 16px/1 var(--sans);
+  text-decoration:none;background:var(--accent);color:var(--accent-ink);box-shadow:0 10px 30px rgba(58,40,31,.3);transition:transform .15s,background-color .6s}
+.bar a.alt{background:var(--paper);color:var(--ink)}
+.bar a:active{transform:scale(.95)}
+.bar svg{width:18px;height:18px}
+
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+
+@media (max-width:900px){
+  .top-phone{display:none}
+  .hero .wrap{grid-template-columns:1fr}
+  .hero .visual{order:-1}
+  .shot{aspect-ratio:4/4.4;border-radius:22px}
+  .palette{margin-top:-6px}
+  .prices,.hyg,.reviews,.masters{grid-template-columns:1fr}
+  .works{grid-template-columns:1fr 1fr}
+  .master,.book{grid-template-columns:1fr;gap:34px}
+  .facts{grid-template-columns:repeat(3,auto);gap:10px 24px}
+  .bar{display:flex}
+}
+@media (max-width:520px){
+  body{font-size:16px}
+  .wrap{width:calc(100% - 32px)}
+  .cta .btn{flex:1;padding:16px 16px}
+  .bottles{justify-content:space-between}
+  .bottle{width:15%}
+  .btn .long{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{transition-duration:.01ms!important;animation-duration:.01ms!important}
+  .reveal{opacity:1;transform:none}
+}
+</style>
+
+<div class="demo" id="demo"></div>
+<header class="top"><div class="wrap">
+  <a class="brand" href="#" id="brand"></a>
+  <a class="top-phone" id="topPhone"></a>
+</div></header>
+
+<section class="hero"><div class="wrap">
+  <div>
+    <span class="promo">−15% на первый визит</span>
+    <p class="kind" id="kind"></p>
+    <h1 id="h1"></h1>
+    <p class="lead" id="lead"></p>
+    <div class="palette">
+      <p>Выберите оттенок</p>
+      <div class="bottles" id="bottles" role="group" aria-label="Оттенки лака"></div>
+    </div>
+    <div class="cta" id="heroCta"></div>
+  </div>
+  <div class="visual">
+    <div class="shot" id="shot">
+      <div class="chip"><i></i><span id="chipName"></span></div>
+    </div>
+  </div>
+</div></section>
+
+<section class="block alt" id="prices"><div class="wrap">
+  <h2 class="h2 reveal">Цены</h2>
+  <p class="sub reveal">Цена окончательная, без доплат за «сложность». Снятие своей работы бесплатно.</p>
+  <div class="prices" id="priceList"></div>
+</div></section>
+
+<section class="block"><div class="wrap">
+  <h2 class="h2 reveal">Работы</h2>
+  <p class="sub reveal">Работы наших мастеров. Больше — в Телеграм-канале студии.</p>
+  <div class="works reveal" id="works"></div>
+</div></section>
+
+<section class="block alt"><div class="wrap">
+  <h2 class="h2 reveal">Стерильно</h2>
+  <p class="sub reveal">Безопасность важнее красоты. Вот что делаю для каждой клиентки.</p>
+  <div class="hyg" id="hyg"></div>
+</div></section>
+
+<section class="block"><div class="wrap">
+  <h2 class="h2 reveal">Наши мастера</h2>
+  <p class="sub reveal">Запишитесь к конкретному мастеру или выберите «любой свободный».</p>
+  <div class="masters" id="masters"></div>
+</div></section>
+
+<section class="block alt"><div class="wrap">
+  <div class="rating reveal" id="rating"></div>
+  <div class="reviews" id="reviews"></div>
+</div></section>
+<div id="zapis"></div>
