@@ -30,9 +30,10 @@ function setV(el,v){if(!el)return;var d=Object.getOwnPropertyDescriptor(el.const
 function send(name,phone,text){return new Promise(function(ok,no){
  var f=tForm();
  if(!f){no("noform");return}
- setV(f.querySelector('[name="Name"]'),name||"—");
- setV(f.querySelector('[name="Phone"]'),phone);
- setV(f.querySelector('[name="Zayavka"]'),text);
+ var q=function(s){return f.querySelector(s)};
+ setV(q('[name="Name"],[name="Имя"]'),name||"—");
+ setV(q('[name="Phone"],[name="Телефон"]'),phone);
+ setV(q('[name="Zayavka"],[name="Заявка"],textarea'),text);
  f.classList.remove("js-send-form-success");
  var btn=f.querySelector(".t-submit,[type=submit]");btn&&btn.click();
  var t0=Date.now(),iv=setInterval(function(){
