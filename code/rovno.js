@@ -38,7 +38,7 @@ function send(name,phone,text){return new Promise(function(ok,no){
  var btn=f.querySelector(".t-submit,[type=submit]");btn&&btn.click();
  var t0=Date.now(),iv=setInterval(function(){
   var sb=f.parentNode.querySelector(".js-successbox"),eb=f.querySelector(".js-errorbox-all");
-  var okd=f.classList.contains("js-send-form-success")||(sb&&getComputedStyle(sb).display!=="none"&&sb.textContent.trim());
+  var okd=f.classList.contains("js-send-form-success")||(sb&&sb.style.display&&sb.style.display!=="none");
   var errd=eb&&getComputedStyle(eb).display!=="none"&&eb.textContent.trim();
   if(okd){clearInterval(iv);ok()}else if(errd){clearInterval(iv);no(errd)}else if(Date.now()-t0>20000){clearInterval(iv);no("timeout")}
  },300)})}
