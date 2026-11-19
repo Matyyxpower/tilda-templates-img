@@ -1,0 +1,302 @@
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#ece3d6;--bg2:#e3d8c9;--paper:#f2ebe1;--ink:#1f2326;--muted:#6b6560;--line:#d9cfc2;--ac:#c56a3a;--f:"Manrope",system-ui,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font:400 17px/1.6 var(--f);overflow-x:hidden}
+img{display:block;max-width:100%}a{color:inherit}
+.rw{width:min(1180px,100% - 40px);margin-inline:auto}
+.rdemo{background:var(--ink);color:#ece3d6;font:500 13px/1.4 var(--f);text-align:center;padding:7px 16px}
+.rtop{padding:20px 0}.rtop .rw{display:flex;justify-content:space-between;align-items:center;gap:16px}
+.rlogo{font:800 22px/1 var(--f);letter-spacing:-.02em;text-decoration:none}.rlogo span{color:var(--ac)}
+.rtop small{display:block;font:500 13px/1.2 var(--f);color:var(--muted);margin-top:4px}
+.rphone{font:700 16px/1 var(--f);text-decoration:none;white-space:nowrap}
+.rbtn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:17px 28px;border-radius:12px;font:700 16px/1 var(--f);text-decoration:none;cursor:pointer;border:1.5px solid var(--ink);background:transparent;color:var(--ink);transition:background .3s,color .3s,transform .15s}
+.rbtn:hover{background:var(--ink);color:var(--paper)}.rbtn:active{transform:scale(.97)}
+.rbtn.ac{background:var(--ac);border-color:var(--ac);color:#fff}.rbtn.ac:hover{background:#a8552b;border-color:#a8552b}
+.rhero{padding:10px 0 90px}.rhero .rw{display:grid;grid-template-columns:1fr 1.15fr;gap:56px;align-items:center}
+.rhero .kind{color:var(--muted);font:600 15px/1.3 var(--f);margin-bottom:18px}
+.rhero h1{font:800 clamp(38px,5vw,66px)/1.05 var(--f);letter-spacing:-.03em;margin-bottom:22px}
+.rhero h1 em{font-style:normal;color:var(--ac)}
+.rhero p.lead{color:var(--muted);max-width:30em;margin-bottom:32px}
+.rcta{display:flex;flex-wrap:wrap;gap:12px}
+.rhero .pic{border-radius:24px;overflow:hidden;aspect-ratio:16/11;box-shadow:0 30px 60px -30px rgba(31,35,38,.5)}
+.rhero .pic img{width:100%;height:100%;object-fit:cover}
+.rstats{display:flex;gap:40px;margin-top:40px}.rstats b{display:block;font:800 34px/1 var(--f)}.rstats span{color:var(--muted);font-size:14px}
+.rsec{padding:100px 0}.ralt{background:var(--bg2)}
+.rh2{font:800 clamp(30px,3.6vw,46px)/1.1 var(--f);letter-spacing:-.02em;margin-bottom:14px}
+.rsub{color:var(--muted);max-width:36em;margin-bottom:48px}
+.rprices{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.rcard{background:var(--paper);border-radius:20px;padding:30px}
+.rcard h3{font:800 22px/1.2 var(--f);margin-bottom:8px}
+.rcard .p{font:800 30px/1 var(--f);color:var(--ac);margin:18px 0 6px}.rcard .p small{font-size:16px;color:var(--muted);font-weight:600}
+.rcard ul{list-style:none;color:var(--muted);font-size:15px}.rcard li{padding:7px 0;border-top:1px solid var(--line)}
+.rba-box{display:grid;grid-template-columns:.8fr 1.2fr;gap:56px;align-items:center}
+.rba{position:relative;aspect-ratio:4/3;border-radius:20px;overflow:hidden;user-select:none;-webkit-user-select:none;touch-action:pan-y;cursor:ew-resize}
+.rba img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none}
+.rba .bef{clip-path:inset(0 calc(100% - var(--x,50%)) 0 0)}
+.rba .h{position:absolute;top:0;bottom:0;left:var(--x,50%);width:3px;margin-left:-1.5px;background:#fff}
+.rba .k{position:absolute;top:50%;left:50%;width:54px;height:54px;border-radius:50%;transform:translate(-50%,-50%);background:var(--ac);color:#fff;display:grid;place-items:center;box-shadow:0 8px 24px rgba(0,0,0,.35)}
+.rba .t{position:absolute;top:14px;padding:6px 12px;border-radius:8px;background:rgba(31,35,38,.7);color:#fff;font:700 13px/1 var(--f)}
+.rba .t.a{right:14px}.rba .t.b{left:14px}
+.rcalc{display:grid;grid-template-columns:1fr 1fr;gap:40px;background:var(--paper);border-radius:24px;padding:40px}
+.rcalc label{display:block;font:700 15px/1.3 var(--f);margin:0 0 12px}
+.rcalc .opts{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px}
+.rcalc .opts button{padding:12px 18px;border-radius:10px;border:1.5px solid var(--line);background:none;font:600 15px/1 var(--f);cursor:pointer;color:var(--ink)}
+.rcalc .opts button[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
+.rcalc input[type=range]{width:100%;accent-color:var(--ac)}
+.rcalc .area{font:800 22px/1 var(--f);margin-top:8px}
+.rres{background:var(--ink);color:#ece3d6;border-radius:18px;padding:32px;display:flex;flex-direction:column;justify-content:space-between;gap:24px}
+.rres .sum{font:800 clamp(34px,4vw,48px)/1 var(--f)}.rres p{color:#b9b2aa;font-size:15px}
+.rgal{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:14px}
+.rgal figure{border-radius:18px;overflow:hidden;aspect-ratio:3/4}.rgal figure:first-child{aspect-ratio:auto}
+.rgal img{width:100%;height:100%;object-fit:cover;transition:transform 1s}.rgal figure:hover img{transform:scale(1.04)}
+.rsteps{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;counter-reset:s}
+.rsteps div{border-top:3px solid var(--ink);padding-top:18px;counter-increment:s}
+.rsteps div::before{content:"0" counter(s);font:800 14px/1 var(--f);color:var(--ac)}
+.rsteps h3{font:800 20px/1.25 var(--f);margin:10px 0 6px}.rsteps p{color:var(--muted);font-size:15px}
+.rrev{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.rrev figure{background:var(--paper);border-radius:20px;padding:28px}
+.rrev blockquote{font:500 17px/1.6 var(--f);margin-bottom:14px}.rrev cite{font-style:normal;color:var(--muted);font-size:14px}
+.rcont{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+.rcont dl{display:grid;grid-template-columns:auto 1fr;gap:10px 24px;margin:30px 0}.rcont dt{color:var(--muted)}
+.rmap{border-radius:20px;overflow:hidden;aspect-ratio:4/3}.rmap iframe{width:100%;height:100%;border:0}
+.rfoot{padding:28px 0;color:var(--muted);font-size:14px;border-top:1px solid var(--line)}
+.rv{opacity:0;transform:translateY(24px);transition:opacity .8s,transform .8s cubic-bezier(.2,.7,.2,1)}.rv.in{opacity:1;transform:none}
+@media (max-width:900px){.rphone{display:none}.rhero .rw,.rba-box,.rcalc,.rcont{grid-template-columns:1fr;gap:30px}.rhero .pic{order:-1}
+.rprices,.rrev{grid-template-columns:1fr}.rsteps{grid-template-columns:1fr 1fr}.rgal{grid-template-columns:1fr 1fr}.rgal figure:first-child{grid-column:span 2;aspect-ratio:16/10}
+.rsec{padding:64px 0}.rcalc{padding:24px}.rstats{gap:24px}.rstats b{font-size:26px}}
+@media (max-width:520px){.rw{width:calc(100% - 32px)}.rcta .rbtn{flex:1}.rsteps{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}}
+/* ===== многостраничная версия ===== */
+.rtop{position:sticky;top:0;z-index:50;background:rgba(236,227,214,.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid transparent;transition:border-color .3s,padding .3s}
+.rtop.sc{border-color:var(--line);padding:12px 0}
+.rnav{display:flex;gap:26px;align-items:center}
+.rnav a{text-decoration:none;font:600 15px/1 var(--f);color:var(--muted);transition:color .2s;position:relative;padding:6px 0}
+.rnav a:hover,.rnav a[aria-current]{color:var(--ink)}
+.rnav a[aria-current]::after{content:"";position:absolute;left:0;right:0;bottom:-2px;height:2px;background:var(--ac);border-radius:2px}
+.rnav .rnav-ph{display:none}
+.rburger{display:none;width:44px;height:44px;border:0;background:none;cursor:pointer;flex-direction:column;justify-content:center;align-items:center;gap:5px}
+.rburger i{display:block;width:22px;height:2px;background:var(--ink);border-radius:2px;transition:transform .3s,opacity .3s}
+.rburger[aria-expanded="true"] i:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.rburger[aria-expanded="true"] i:nth-child(2){opacity:0}
+.rburger[aria-expanded="true"] i:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.kind a{color:inherit;text-decoration:none}.kind a:hover{color:var(--ac)}
+.rh1{font:800 clamp(36px,5vw,60px)/1.05 var(--f);letter-spacing:-.03em;margin-bottom:16px}
+.rh3{font:800 24px/1.2 var(--f);margin-bottom:6px}
+.rpage-top{padding-top:40px}
+.rhero-s h1{font-size:clamp(34px,4.4vw,56px)}
+.rhero-s .rstats{margin:0 0 34px}.rhero-s .rstats b{font-size:26px}
+.rbtn.light{border-color:#ece3d6;color:#ece3d6}.rbtn.light:hover{background:#ece3d6;color:var(--ink)}
+/* карточки видов ремонта */
+.rcard-l{text-decoration:none;display:flex;flex-direction:column;transition:transform .3s,box-shadow .3s}
+.rcard-l:hover{transform:translateY(-6px);box-shadow:0 26px 50px -30px rgba(31,35,38,.45)}
+.rcard-l .ci{margin:-30px -30px 22px;aspect-ratio:16/10;overflow:hidden;border-radius:20px 20px 0 0;background:var(--bg2)}
+.rcard-l .ci img{width:100%;height:100%;object-fit:cover;transition:transform 1s}.rcard-l:hover .ci img{transform:scale(1.05)}
+.rcard-l ul{flex:1}.rcard-l .more{margin-top:18px;font:700 15px/1 var(--f);color:var(--ac)}
+.rhead{display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap;margin-bottom:48px}.rhead .rsub{margin-bottom:0}
+/* страница услуги */
+.rinc{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.rinc div{background:var(--paper);border-radius:18px;padding:26px 26px 24px;border-left:4px solid var(--ac)}
+.rinc h3{font:800 19px/1.2 var(--f);margin-bottom:6px}.rinc p{color:var(--muted);font-size:15px}
+.rsplit{display:grid;grid-template-columns:1fr 1.2fr;gap:64px;align-items:start}
+.rfit{list-style:none;margin-top:28px}
+.rfit li{padding:16px 0 16px 40px;border-top:1px solid var(--line);position:relative;font-weight:600}
+.rfit li::before{content:"✓";position:absolute;left:0;top:13px;width:26px;height:26px;border-radius:50%;background:var(--ac);color:#fff;display:grid;place-items:center;font-size:14px}
+.rtable{width:100%;border-collapse:collapse;margin-top:28px;font-size:16px}
+.rtable td{padding:15px 0;border-top:1px solid var(--line)}.rtable td:last-child{text-align:right;font-weight:800;white-space:nowrap;padding-left:16px}
+.rsmall{color:var(--muted);font-size:14px;margin-top:14px}
+/* квиз */
+.rquiz{background:var(--paper);border-radius:24px;padding:40px;position:relative}
+.rq-bar{height:6px;border-radius:6px;background:var(--line);overflow:hidden}.rq-bar span{display:block;height:100%;width:0;background:var(--ac);transition:width .5s cubic-bezier(.2,.7,.2,1)}
+.rq-step{color:var(--muted);font:600 14px/1 var(--f);margin:14px 0 26px}
+.rq-s{border:0;display:none;animation:rqIn .45s cubic-bezier(.2,.7,.2,1);min-width:0}.rq-s.on{display:block}
+@keyframes rqIn{from{opacity:0;transform:translateX(24px)}to{opacity:1;transform:none}}
+.rq-s legend{font:800 clamp(22px,2.6vw,30px)/1.2 var(--f);margin-bottom:24px;padding:0}
+.rq-s .opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.rq-s .opts button{padding:22px 20px;border-radius:14px;border:1.5px solid var(--line);background:var(--bg);font:700 17px/1.25 var(--f);color:var(--ink);cursor:pointer;text-align:left;transition:border-color .2s,background .2s,transform .15s}
+.rq-s .opts button small{display:block;font:600 14px/1 var(--f);color:var(--muted);margin-top:8px}
+.rq-s .opts button:hover{border-color:var(--ac)}.rq-s .opts button:active{transform:scale(.98)}
+.rq-s .opts button[aria-pressed="true"]{border-color:var(--ac);background:#f7e3d6}
+.rq-s input[type=range]{width:100%;accent-color:var(--ac);height:28px}
+.rq-s .area{font:800 40px/1 var(--f);margin:12px 0 28px}
+.rq-back{margin-top:22px;border:0;background:none;color:var(--muted);font:600 15px/1 var(--f);cursor:pointer;padding:6px 0;visibility:hidden}.rq-back.on{visibility:visible}.rq-back:hover{color:var(--ink)}
+.rq-res.on{display:grid;grid-template-columns:1fr 1fr;gap:32px}
+.rq-res .rres{justify-content:flex-start}.rq-res .rres ul{list-style:none;margin-top:6px;font-size:15px;color:#b9b2aa}.rq-res .rres li{padding:7px 0;border-top:1px solid rgba(236,227,214,.15)}
+.rq-form{display:flex;flex-direction:column;gap:12px}
+.rq-form input,.rq-form textarea{width:100%;padding:16px 18px;border-radius:12px;border:1.5px solid var(--line);background:var(--bg);font:500 16px/1.3 var(--f);color:var(--ink);resize:vertical}
+.rq-form input:focus,.rq-form textarea:focus{outline:none;border-color:var(--ac)}
+.rq-form input.err{border-color:#c0392b}
+.rq-form .rbtn{width:100%}.rq-form .rbtn[disabled]{opacity:.6;pointer-events:none}
+.rq-lead{color:var(--muted);font-size:15px}.rq-note{color:var(--muted);font-size:12px}
+.rq-msg{font-weight:700;font-size:15px}.rq-msg:empty{display:none}.rq-msg.ok{color:#2e7d4f}.rq-msg.bad{color:#c0392b}
+.rform{padding:34px;position:sticky;top:110px}
+/* объекты */
+.rfilter{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px}
+.rfilter button{padding:12px 20px;border-radius:999px;border:1.5px solid var(--line);background:none;font:600 15px/1 var(--f);cursor:pointer;color:var(--ink)}
+.rfilter button[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
+.rworks{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.rworks figure.hide{display:none}
+.rworks .zoom{display:block;width:100%;border:0;padding:0;cursor:zoom-in;border-radius:18px;overflow:hidden;aspect-ratio:4/5;background:var(--bg2)}
+.rworks img{width:100%;height:100%;object-fit:cover;transition:transform 1s}.rworks .zoom:hover img{transform:scale(1.05)}
+.rworks figcaption{padding:14px 2px 0}.rworks figcaption b{display:block;font:700 17px/1.3 var(--f)}.rworks figcaption span{color:var(--muted);font-size:14px}
+.rlb{position:fixed;inset:0;z-index:999;background:rgba(20,20,20,.9);display:grid;place-items:center;padding:20px}.rlb[hidden]{display:none}
+.rlb img{max-width:100%;max-height:90vh;border-radius:14px}.rlb button{position:absolute;top:14px;right:18px;border:0;background:none;color:#fff;font-size:40px;cursor:pointer;line-height:1}
+/* полоса-призыв, карта, подвал */
+.rcta-band{background:var(--ink);color:#ece3d6;padding:80px 0}.rcta-band .rw{display:flex;justify-content:space-between;align-items:center;gap:30px;flex-wrap:wrap}.rcta-band .rh2{max-width:16em;margin:0}
+.rmapw{height:420px}.rmapw iframe{width:100%;height:100%;border:0;display:block}
+.rfoot{padding:56px 0 40px}.rfoot .rw{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:30px}
+.rfoot p{margin-top:12px;font-size:14px}.rfoot b{display:block;color:var(--ink);font-size:15px;margin-bottom:12px}
+.rfoot .rw>div>a:not(.rlogo){display:block;text-decoration:none;padding:5px 0;font-size:15px}.rfoot a:hover{color:var(--ac)}
+.rovno [id]{scroll-margin-top:90px}
+/* скрытая форма Тильды — через неё заявки уходят в Telegram */
+.rovno-hidden{position:absolute!important;left:-9999px!important;top:0!important;width:600px!important;height:1px!important;overflow:hidden!important}
+@media (max-width:1100px){.rnav{gap:18px}.rnav a{font-size:14px}.rtop .rphone{display:none}}
+@media (max-width:900px){
+ .rburger{display:flex}
+ .rtop{backdrop-filter:none;-webkit-backdrop-filter:none;background:var(--bg)}
+ .rnav{position:fixed;left:0;right:0;top:0;height:100vh;z-index:-1;background:var(--bg);flex-direction:column;align-items:flex-start;gap:0;padding:140px 24px 30px;transform:translateY(-100%);transition:transform .4s cubic-bezier(.2,.7,.2,1),visibility .4s;visibility:hidden}
+ .rnav.open{transform:none;visibility:visible}
+ .rnav a{font:800 26px/1 var(--f);color:var(--ink);padding:16px 0;width:100%;border-bottom:1px solid var(--line)}
+ .rnav a[aria-current]{color:var(--ac)}.rnav a[aria-current]::after{display:none}
+ .rnav .rnav-ph{display:block;border:0;margin-top:20px;color:var(--ac);font-size:22px}
+ .rinc{grid-template-columns:1fr 1fr}.rsplit{grid-template-columns:1fr;gap:40px}
+ .rquiz{padding:24px 20px}.rq-res.on{grid-template-columns:1fr}
+ .rworks{grid-template-columns:1fr 1fr;gap:14px}
+ .rfoot .rw{grid-template-columns:1fr 1fr}.rform{position:static}
+ .rcta-band{padding:56px 0}.rmapw{height:320px}
+}
+@media (max-width:520px){.rinc{grid-template-columns:1fr}.rq-s .opts{grid-template-columns:1fr}.rq-s .opts button{padding:18px}.rworks{grid-template-columns:1fr}.rfoot .rw{grid-template-columns:1fr}.rform{padding:22px}.rhero-s .rstats{flex-wrap:wrap;gap:18px 26px}}
+</style>
+<div class="rovno">
+<div class="rdemo">Шаблон сайта. Название, цены, фото и отзывы указаны для примера.</div>
+<header class="rtop"><div class="rw">
+ <a class="rlogo" href="/remont">Ровно<span>.</span><small>Ремонт квартир в Нижнем</small></a>
+ <nav class="rnav" id="rNav"><a href="/remont-kosmeticheskij">Косметический</a><a href="/remont-kapitalnyj">Капитальный</a><a href="/remont-pod-klyuch">Под ключ</a><a href="/remont-raboty" aria-current="page">Наши объекты</a><a href="/remont-kontakty">Контакты</a>
+  <a class="rnav-ph" href="tel:+79000000000">+7 (900) 000-00-00</a></nav>
+ <a class="rphone" href="tel:+79000000000">+7 (900) 000-00-00</a>
+ <button class="rburger" id="rBurger" type="button" aria-label="Меню" aria-expanded="false"><i></i><i></i><i></i></button>
+</div></header>
+<section class="rsec rpage-top"><div class="rw">
+ <p class="kind"><a href="/remont">Главная</a> / Наши объекты</p><h1 class="rh1">Наши объекты</h1>
+ <p class="rsub">Квартиры, которые мы сдали за последний год. Нажмите на фото, чтобы рассмотреть.</p>
+ <div class="rfilter" id="rFilter"><button type="button" data-f="" aria-pressed="true">Все</button><button type="button" data-f="kosm" aria-pressed="false">Косметический</button><button type="button" data-f="kap" aria-pressed="false">Капитальный</button><button type="button" data-f="klyuch" aria-pressed="false">Под ключ</button></div>
+ <div class="rworks" id="rWorks"><figure data-k="kap"><button type="button" class="zoom" aria-label="Увеличить"><img src="https://cdn.jsdelivr.net/gh/Matyyxpower/tilda-templates-img@main/remont/g2.jpg" alt="Спальня, Сормово" loading="lazy"></button><figcaption><b>Спальня, Сормово</b><span>Капитальный · 62 м² · 8 недель</span></figcaption></figure><figure data-k="klyuch"><button type="button" class="zoom" aria-label="Увеличить"><img src="https://cdn.jsdelivr.net/gh/Matyyxpower/tilda-templates-img@main/remont/g1.jpg" alt="Ванная, Нижегородский район" loading="lazy"></button><figcaption><b>Ванная, Нижегородский район</b><span>Под ключ · 74 м² · 11 недель</span></figcaption></figure><figure data-k="klyuch"><button type="button" class="zoom" aria-label="Увеличить"><img src="https://cdn.jsdelivr.net/gh/Matyyxpower/tilda-templates-img@main/remont/w1.jpg" alt="Ванная с душевой, ЖК «Окский берег»" loading="lazy"></button><figcaption><b>Ванная с душевой, ЖК «Окский берег»</b><span>Под ключ · 58 м² · 10 недель</span></figcaption></figure><figure data-k="kosm"><button type="button" class="zoom" aria-label="Увеличить"><img src="https://cdn.jsdelivr.net/gh/Matyyxpower/tilda-templates-img@main/remont/g3.jpg" alt="Прихожая, Автозавод" loading="lazy"></button><figcaption><b>Прихожая, Автозавод</b><span>Косметический · 45 м² · 3 недели</span></figcaption></figure><figure data-k="kosm"><button type="button" class="zoom" aria-label="Увеличить"><img src="https://cdn.jsdelivr.net/gh/Matyyxpower/tilda-templates-img@main/remont/w2.jpg" alt="Прихожая, Канавино" loading="lazy"></button><figcaption><b>Прихожая, Канавино</b><span>Косметический · 38 м² · 2 недели</span></figcaption></figure><figure data-k="kap"><button type="button" class="zoom" aria-label="Увеличить"><img src="https://cdn.jsdelivr.net/gh/Matyyxpower/tilda-templates-img@main/remont/w3.jpg" alt="Детская, Верхние Печёры" loading="lazy"></button><figcaption><b>Детская, Верхние Печёры</b><span>Капитальный · 67 м² · 9 недель</span></figcaption></figure><figure data-k="kosm"><button type="button" class="zoom" aria-label="Увеличить"><img src="https://cdn.jsdelivr.net/gh/Matyyxpower/tilda-templates-img@main/remont/w4.jpg" alt="Спальня, Мещерское озеро" loading="lazy"></button><figcaption><b>Спальня, Мещерское озеро</b><span>Косметический · 52 м² · 3 недели</span></figcaption></figure><figure data-k="klyuch"><button type="button" class="zoom" aria-label="Увеличить"><img src="https://cdn.jsdelivr.net/gh/Matyyxpower/tilda-templates-img@main/remont/w5.jpg" alt="Кабинет на балконе, Советский район" loading="lazy"></button><figcaption><b>Кабинет на балконе, Советский район</b><span>Под ключ · 81 м² · 12 недель</span></figcaption></figure><figure data-k="kap"><button type="button" class="zoom" aria-label="Увеличить"><img src="https://cdn.jsdelivr.net/gh/Matyyxpower/tilda-templates-img@main/remont/w6.jpg" alt="Кухня в хрущёвке, Ленинский район" loading="lazy"></button><figcaption><b>Кухня в хрущёвке, Ленинский район</b><span>Капитальный · 43 м² · 6 недель</span></figcaption></figure></div>
+</div></section>
+<section class="rsec ralt"><div class="rw rba-box">
+ <div class="rv"><h2 class="rh2">Было и стало</h2><p class="rsub" style="margin-bottom:0">Кухня 9 м² в панельном доме: от голого бетона до готовой кухни за 5 недель. Потяните ползунок.</p></div>
+ <div class="rba rv" id="rBa"><img src="https://cdn.jsdelivr.net/gh/Matyyxpower/tilda-templates-img@main/remont/after.jpg" alt="Кухня после ремонта"><img class="bef" src="https://cdn.jsdelivr.net/gh/Matyyxpower/tilda-templates-img@main/remont/before.jpg" alt="Кухня до ремонта"><span class="t b">До</span><span class="t a">После</span><div class="h"><div class="k">⟷</div></div></div>
+</div></section>
+<section class="rcta-band"><div class="rw"><h2 class="rh2">Хотите так же? Посчитаем стоимость за минуту</h2><div class="rcta"><a class="rbtn ac" href="/remont#quiz">Рассчитать стоимость</a><a class="rbtn light" href="https://wa.me/79000000000" target="_blank" rel="noopener">Написать в WhatsApp</a></div></div></section>
+<div class="rlb" id="rLb" hidden><button type="button" aria-label="Закрыть">×</button><img alt=""></div>
+<footer class="rfoot"><div class="rw">
+ <div><a class="rlogo" href="/remont">Ровно<span>.</span></a><p>Ремонт квартир под ключ<br>Нижний Новгород</p></div>
+ <div><b>Ремонт</b><a href="/remont-kosmeticheskij">Косметический</a><a href="/remont-kapitalnyj">Капитальный</a><a href="/remont-pod-klyuch">Под ключ</a></div>
+ <div><b>Компания</b><a href="/remont-raboty">Наши объекты</a><a href="/remont-kontakty">Контакты</a><a href="/remont#quiz">Рассчитать стоимость</a></div>
+ <div><b>Связаться</b><a href="tel:+79000000000">+7 (900) 000-00-00</a><a href="https://wa.me/79000000000" target="_blank" rel="noopener">WhatsApp</a><a href="https://t.me/username" target="_blank" rel="noopener">Telegram</a></div>
+</div></footer>
+</div>
+<script>
+(function(){
+var $=function(i){return document.getElementById(i)};
+var WA="79000000000";
+
+/* шапка: тень при прокрутке + бургер */
+var top=document.querySelector(".rtop");
+function onSc(){top&&top.classList.toggle("sc",scrollY>20)}addEventListener("scroll",onSc,{passive:true});onSc();
+var bg=$("rBurger"),nav=$("rNav");
+function menu(o){bg.setAttribute("aria-expanded",o);nav.classList.toggle("open",o);document.documentElement.style.overflow=o?"hidden":""}
+if(bg){bg.addEventListener("click",function(){menu(bg.getAttribute("aria-expanded")!=="true")});
+ nav.addEventListener("click",function(e){if(e.target.closest("a"))menu(false)})}
+
+/* было/стало */
+var ba=$("rBa");
+if(ba){var drag=false;var sx=function(v){ba.style.setProperty("--x",Math.max(0,Math.min(100,v))+"%")};
+ var fe=function(e){var r=ba.getBoundingClientRect();sx((e.clientX-r.left)/r.width*100)};
+ ba.addEventListener("pointerdown",function(e){drag=true;ba.setPointerCapture(e.pointerId);fe(e)});
+ ba.addEventListener("pointermove",function(e){if(drag)fe(e)});
+ ba.addEventListener("pointerup",function(){drag=false});ba.addEventListener("pointercancel",function(){drag=false})}
+
+/* появление блоков */
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}})},{rootMargin:"0px 0px -8% 0px"});
+document.querySelectorAll(".rv").forEach(function(el){io.observe(el)});
+
+/* отправка через скрытую форму Тильды (она шлёт в Telegram и CRM) */
+function tForm(){return document.querySelector("form.t-form")}
+function hideT(){var f=tForm();if(f){var r=f.closest(".t-rec");if(r)r.classList.add("rovno-hidden")}}
+hideT();document.addEventListener("DOMContentLoaded",hideT);
+function setV(el,v){if(!el)return;var d=Object.getOwnPropertyDescriptor(el.constructor.prototype,"value");d&&d.set?d.set.call(el,v):el.value=v;el.dispatchEvent(new Event("input",{bubbles:true}));el.dispatchEvent(new Event("change",{bubbles:true}))}
+function send(name,phone,text){return new Promise(function(ok,no){
+ var f=tForm();
+ if(!f){no("noform");return}
+ setV(f.querySelector('[name="Name"]'),name||"—");
+ setV(f.querySelector('[name="Phone"]'),phone);
+ setV(f.querySelector('[name="Zayavka"]'),text);
+ f.classList.remove("js-send-form-success");
+ var btn=f.querySelector(".t-submit,[type=submit]");btn&&btn.click();
+ var t0=Date.now(),iv=setInterval(function(){
+  var sb=f.parentNode.querySelector(".js-successbox"),eb=f.querySelector(".js-errorbox-all");
+  var okd=f.classList.contains("js-send-form-success")||(sb&&getComputedStyle(sb).display!=="none"&&sb.textContent.trim());
+  var errd=eb&&getComputedStyle(eb).display!=="none"&&eb.textContent.trim();
+  if(okd){clearInterval(iv);ok()}else if(errd){clearInterval(iv);no(errd)}else if(Date.now()-t0>20000){clearInterval(iv);no("timeout")}
+ },300)})}
+function digits(s){return(s||"").replace(/\D/g,"")}
+function bindForm(form,build){
+ if(!form)return;var msg=form.querySelector(".rq-msg"),b=form.querySelector("[type=submit]"),ph=form.querySelector('[name="p"]');
+ ph.addEventListener("input",function(){ph.classList.remove("err")});
+ form.addEventListener("submit",function(e){e.preventDefault();
+  var d=digits(ph.value);if(d.length<10){ph.classList.add("err");msg.className="rq-msg bad";msg.textContent="Проверьте номер телефона";ph.focus();return}
+  var text=build(form),nm=form.querySelector('[name="n"]').value.trim();
+  b.disabled=true;msg.className="rq-msg";msg.textContent="Отправляем…";
+  send(nm,ph.value.trim(),text).then(function(){
+   form.innerHTML='<div class="rq-done"><b>Спасибо'+(nm?", "+nm.replace(/[<>&]/g,""):"")+'!</b><p class="rq-lead">Заявка у нас. Перезвоним в течение 15 минут в рабочее время.</p></div>';
+  },function(err){
+   b.disabled=false;msg.className="rq-msg bad";
+   msg.innerHTML='Не получилось отправить. Напишите нам в <a href="https://wa.me/'+WA+'?text='+encodeURIComponent(text)+'" target="_blank" rel="noopener">WhatsApp</a> — расчёт уже вставлен в сообщение.';
+   if(err!=="noform")console.warn("form:",err)})})}
+
+/* квиз-калькулятор */
+var qz=$("rQuiz");
+if(qz){
+ var all=[].slice.call(qz.querySelectorAll(".rq-s")),preset=qz.dataset.type,ans={},hist=[];
+ if(preset){var pb=qz.querySelector('[data-q="type"] [data-key="'+preset+'"]');if(pb){pb.setAttribute("aria-pressed","true");ans.type=pb}}
+ var steps=all.filter(function(s){return !(preset&&s.dataset.q==="type")});
+ var qN=steps.length-1,cur=0;
+ function show(i){cur=i;steps.forEach(function(s,j){s.classList.toggle("on",j===i)});
+  $("rqBar").style.width=(i>=qN?100:Math.round(i/qN*100))+"%";
+  $("rqStep").textContent=i>=qN?"Готово! Вот ваш расчёт":"Вопрос "+(i+1)+" из "+qN;
+  $("rqBack").classList.toggle("on",i>0);if(i>=qN)result()}
+ function go(i){hist.push(cur);show(i)}
+ qz.addEventListener("click",function(e){var b=e.target.closest(".opts button");if(!b)return;
+  var s=b.closest(".rq-s");[].forEach.call(b.parentNode.children,function(x){x.setAttribute("aria-pressed",x===b)});
+  ans[s.dataset.q]=b;setTimeout(function(){go(cur+1)},260)});
+ qz.querySelector(".rq-next").addEventListener("click",function(){go(cur+1)});
+ $("rqBack").addEventListener("click",function(){if(hist.length)show(hist.pop())});
+ var ar=$("rqArea");ar.addEventListener("input",function(){$("rqAreaV").textContent=ar.value});
+ function pick(q,def){return ans[q]||qz.querySelector('[data-q="'+q+'"] .opts button'+(def?':nth-child('+def+')':''))}
+ var R={};
+ function result(){
+  var a=+ar.value,t=pick("type",2),h=pick("home"),st=pick("state"),w=pick("when");
+  var p=+t.dataset.p*+h.dataset.k+(+st.dataset.a||0),s=Math.round(a*p/1000)*1000;
+  var bp=+t.dataset.p,wk=Math.max(2,Math.round(a/(bp>11000?6:bp>6000?9:15))+(+st.dataset.a?1:0));
+  $("rqSum").textContent="≈ "+s.toLocaleString("ru-RU")+" ₽";
+  $("rqTerm").textContent="Срок: около "+wk+" недель";
+  R={lines:[t.dataset.v+" ремонт",a+" м²",h.dataset.v,st.dataset.v,"Начать: "+w.dataset.v],sum:s,wk:wk};
+  $("rqList").innerHTML=R.lines.map(function(x){return"<li>"+x+"</li>"}).join("")}
+ bindForm($("rqForm"),function(){return"Расчёт с сайта: "+R.lines.join(", ")+". Итого ≈ "+R.sum.toLocaleString("ru-RU")+" ₽, срок около "+R.wk+" недель."});
+ show(0);
+}else{
+ /* форма на странице контактов */
+ bindForm($("rqForm"),function(f){var c=f.querySelector('[name="c"]');return"Запись на замер"+(c&&c.value.trim()?". Комментарий: "+c.value.trim():"")});
+}
+
+/* объекты: фильтр и просмотр фото */
+var fl=$("rFilter");
+if(fl){fl.addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;
+ [].forEach.call(fl.children,function(x){x.setAttribute("aria-pressed",x===b)});
+ document.querySelectorAll("#rWorks figure").forEach(function(f){f.classList.toggle("hide",!!b.dataset.f&&f.dataset.k!==b.dataset.f)})});
+ var lb=$("rLb");
+ $("rWorks").addEventListener("click",function(e){var z=e.target.closest(".zoom");if(!z)return;lb.querySelector("img").src=z.querySelector("img").src;lb.hidden=false});
+ lb.addEventListener("click",function(e){if(e.target.tagName!=="IMG")lb.hidden=true});
+ addEventListener("keydown",function(e){if(e.key==="Escape")lb.hidden=true})}
+})();
+</script>
