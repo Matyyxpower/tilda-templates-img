@@ -1,0 +1,125 @@
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#17110f;--bg2:#211814;--card:#2a1f1a;--cream:#f3e6d6;--muted:#b9a593;--line:#3a2c25;--ac:#d4a373;--se:"Cormorant Garamond",Georgia,serif;--f:"Nunito",system-ui,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--cream);font:400 17px/1.6 var(--f);overflow-x:hidden}
+img{display:block;max-width:100%}a{color:inherit}
+.cw{width:min(1180px,100% - 40px);margin-inline:auto}
+.cdemo{background:var(--ac);color:#17110f;font:600 13px/1.4 var(--f);text-align:center;padding:7px 16px}
+.ctop{position:absolute;left:0;right:0;z-index:3;padding:22px 0}.ctop .cw{display:flex;justify-content:space-between;align-items:center}
+.clogo{font:600 30px/1 var(--se);text-decoration:none;letter-spacing:.02em}.clogo small{display:block;font:600 12px/1 var(--f);color:var(--muted);letter-spacing:.12em;text-transform:uppercase;margin-top:6px}
+.cphone{font:700 16px/1 var(--f);text-decoration:none}
+.cbtn{display:inline-flex;align-items:center;justify-content:center;padding:17px 30px;border-radius:999px;font:700 16px/1 var(--f);text-decoration:none;cursor:pointer;border:1.5px solid var(--cream);color:var(--cream);background:transparent;transition:background .3s,color .3s,transform .15s}
+.cbtn:hover{background:var(--cream);color:#17110f}.cbtn:active{transform:scale(.97)}
+.cbtn.ac{background:var(--ac);border-color:var(--ac);color:#17110f}.cbtn.ac:hover{background:#e8bd8f;border-color:#e8bd8f}
+.chero{position:relative;min-height:min(92vh,820px);display:flex;align-items:center;overflow:hidden}
+.chero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:70% center}
+.chero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(23,17,15,.95) 0%,rgba(23,17,15,.7) 40%,rgba(23,17,15,0) 75%)}
+.chero .cw{position:relative;z-index:2}
+.chero .kind{color:var(--ac);font:700 13px/1 var(--f);letter-spacing:.14em;text-transform:uppercase;margin-bottom:22px}
+.chero h1{font:500 clamp(46px,6.4vw,92px)/.98 var(--se);max-width:9em;margin-bottom:24px}.chero h1 i{color:var(--ac)}
+.chero p{color:var(--muted);max-width:27em;margin-bottom:34px}
+.ccta{display:flex;flex-wrap:wrap;gap:12px}
+.csec{padding:100px 0}.calt{background:var(--bg2)}
+.ch2{font:500 clamp(36px,4.4vw,58px)/1.05 var(--se);margin-bottom:12px}
+.csub{color:var(--muted);max-width:34em;margin-bottom:48px}
+.cmenu{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+.citem{background:var(--card);border-radius:22px;overflow:hidden;display:flex;flex-direction:column}
+.citem .im{aspect-ratio:1;overflow:hidden}.citem img{width:100%;height:100%;object-fit:cover;transition:transform 1s}.citem:hover img{transform:scale(1.05)}
+.citem .bd{padding:20px 22px 22px;display:flex;flex-direction:column;flex:1}
+.citem h3{font:600 26px/1.1 var(--se);margin-bottom:6px}.citem p{color:var(--muted);font-size:15px;flex:1}
+.citem .row{display:flex;justify-content:space-between;align-items:center;margin-top:16px}
+.citem b{font:700 18px/1 var(--f)}
+.citem button{padding:10px 16px;border-radius:999px;border:1.5px solid var(--ac);background:none;color:var(--ac);font:700 14px/1 var(--f);cursor:pointer;transition:background .3s,color .3s}
+.citem button:hover,.citem button.on{background:var(--ac);color:#17110f}
+.cbuild{display:grid;grid-template-columns:1fr 1fr;gap:40px;background:var(--card);border-radius:26px;padding:40px}
+.cbuild label{display:block;font:700 15px/1.3 var(--f);margin-bottom:12px}
+.copts{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+.copts button{padding:12px 18px;border-radius:999px;border:1.5px solid var(--line);background:none;color:var(--cream);font:600 15px/1 var(--f);cursor:pointer}
+.copts button[aria-pressed="true"]{background:var(--cream);border-color:var(--cream);color:#17110f}
+.cres{background:var(--bg);border-radius:20px;padding:32px;display:flex;flex-direction:column;justify-content:space-between;gap:24px}
+.cres .sum{font:600 clamp(40px,4.6vw,60px)/1 var(--se);color:var(--ac)}.cres p{color:var(--muted);font-size:15px}
+.csteps{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.csteps div{border-top:1px solid var(--ac);padding-top:20px}
+.csteps span{font:500 italic 40px/1 var(--se);color:var(--ac)}.csteps h3{font:600 26px/1.15 var(--se);margin:8px 0 6px}.csteps p{color:var(--muted);font-size:15px}
+.crev{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.crev figure{background:var(--card);border-radius:22px;padding:28px}
+.crev blockquote{font:500 italic 22px/1.4 var(--se);margin-bottom:14px}.crev cite{font-style:normal;color:var(--muted);font-size:14px}
+.ccont{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+.ccont dl{display:grid;grid-template-columns:auto 1fr;gap:10px 24px;margin:30px 0}.ccont dt{color:var(--muted)}
+.cmap{border-radius:22px;overflow:hidden;aspect-ratio:4/3}.cmap iframe{width:100%;height:100%;border:0;filter:grayscale(.5) invert(.9) hue-rotate(180deg) sepia(.3)}
+.cfoot{padding:28px 0 110px;color:var(--muted);font-size:14px;border-top:1px solid var(--line)}
+.cbar{position:fixed;left:12px;right:12px;bottom:12px;z-index:20;display:none;transform:translateY(160%);transition:transform .5s}
+.cbar.show{transform:none}.cbar a{flex:1}
+.cv{opacity:0;transform:translateY(24px);transition:opacity .8s,transform .8s cubic-bezier(.2,.7,.2,1)}.cv.in{opacity:1;transform:none}
+@media (max-width:1000px){.cmenu{grid-template-columns:1fr 1fr}}
+@media (max-width:900px){.cphone{display:none}.cbuild,.ccont{grid-template-columns:1fr;gap:28px}.csteps,.crev{grid-template-columns:1fr}.csec{padding:64px 0}.cbuild{padding:24px}
+.chero{min-height:auto;flex-direction:column;align-items:stretch}.chero img{position:relative;height:56vw;min-height:300px;object-position:80% center}
+.chero::after{background:linear-gradient(180deg,rgba(23,17,15,0) 30%,rgba(23,17,15,1) 56vw)}.chero .cw{margin-top:-60px;padding-bottom:50px}.cbar{display:flex}}
+@media (max-width:520px){.cw{width:calc(100% - 32px)}.cmenu{grid-template-columns:1fr}.ccta .cbtn{flex:1}}
+@media (prefers-reduced-motion:reduce){.cv{opacity:1;transform:none;transition:none}}
+</style>
+<div class="cdemo">Шаблон сайта. Название, цены, фото и отзывы указаны для примера.</div>
+<div style="position:relative">
+<header class="ctop"><div class="cw"><a class="clogo" href="#">Сахар<small>Кондитерская</small></a><a class="cphone" href="tel:+79000000000">+7 (900) 000-00-00</a></div></header>
+<section class="chero"><img src="https://cdn.jsdelivr.net/gh/Matyyxpower/tilda-templates-img@main/cake/hero.jpg" alt="Торт с ягодами"><div class="cw">
+ <p class="kind">Кондитерская в Нижнем Новгороде</p>
+ <h1>Торты, которые <i>запомнят</i> гости</h1>
+ <p>Печём на сливочном масле и натуральных сливках, без маргарина и консервантов. Торт на заказ — от 2 дней.</p>
+ <div class="ccta"><a class="cbtn ac" href="#build">Собрать торт</a><a class="cbtn" href="#menu">Смотреть меню</a></div>
+</div></section></div>
+<section class="csec" id="menu"><div class="cw">
+ <h2 class="ch2 cv">Витрина</h2><p class="csub cv">Есть в наличии каждый день. Отметьте, что хотите — добавим в сообщение для заказа.</p>
+ <div class="cmenu" id="cMenu">
+  <div class="citem cv"><div class="im"><img src="https://cdn.jsdelivr.net/gh/Matyyxpower/tilda-templates-img@main/cake/m1.jpg" alt="Шоколадный торт" loading="lazy"></div><div class="bd"><h3>Шоколадный</h3><p>Бисквит на какао, ганаш из бельгийского шоколада</p><div class="row"><b>390 ₽</b><button type="button" data-n="Шоколадный торт (кусочек)">В заказ</button></div></div></div>
+  <div class="citem cv"><div class="im"><img src="https://cdn.jsdelivr.net/gh/Matyyxpower/tilda-templates-img@main/cake/m2.jpg" alt="Макаронс" loading="lazy"></div><div class="bd"><h3>Макаронс</h3><p>Набор из 6 штук: фисташка, малина, карамель</p><div class="row"><b>690 ₽</b><button type="button" data-n="Макаронс, 6 шт">В заказ</button></div></div></div>
+  <div class="citem cv"><div class="im"><img src="https://cdn.jsdelivr.net/gh/Matyyxpower/tilda-templates-img@main/cake/m3.jpg" alt="Эклеры" loading="lazy"></div><div class="bd"><h3>Эклеры</h3><p>Заварное тесто, крем пломбир, глазурь</p><div class="row"><b>180 ₽</b><button type="button" data-n="Эклеры">В заказ</button></div></div></div>
+  <div class="citem cv"><div class="im"><img src="https://cdn.jsdelivr.net/gh/Matyyxpower/tilda-templates-img@main/cake/m4.jpg" alt="Бенто-торт" loading="lazy"></div><div class="bd"><h3>Бенто-торт</h3><p>Маленький торт на двоих, 450 г, надпись в подарок</p><div class="row"><b>1 400 ₽</b><button type="button" data-n="Бенто-торт">В заказ</button></div></div></div>
+ </div>
+ <div class="ccta cv" style="margin-top:34px"><a class="cbtn ac" id="cOrder" target="_blank" rel="noopener">Заказать в WhatsApp</a><span id="cPicked" style="align-self:center;color:var(--muted)"></span></div>
+</div></section>
+<section class="csec calt" id="build"><div class="cw">
+ <h2 class="ch2 cv">Торт на заказ</h2><p class="csub cv">Выберите вес и начинку — покажем цену. Дизайн обсудим в сообщениях, пришлите картинку-пример.</p>
+ <div class="cbuild cv">
+  <div><label>Вес</label><div class="copts" id="cKg"><button type="button" data-v="1.5" aria-pressed="false">1,5 кг · 6–8 гостей</button><button type="button" data-v="2.5" aria-pressed="true">2,5 кг · 10–12</button><button type="button" data-v="4" aria-pressed="false">4 кг · 16–20</button></div>
+  <label>Начинка</label><div class="copts" id="cFill"><button type="button" data-p="2200" aria-pressed="true">Шоколад-вишня</button><button type="button" data-p="2000" aria-pressed="false">Ванильный с ягодами</button><button type="button" data-p="2400" aria-pressed="false">Фисташка-малина</button><button type="button" data-p="2100" aria-pressed="false">Медовик</button></div>
+  <label>Ярусы</label><div class="copts" id="cTier"><button type="button" data-k="1" aria-pressed="true">Один</button><button type="button" data-k="1.15" aria-pressed="false">Два яруса</button></div></div>
+  <div class="cres"><div><p>Стоимость торта</p><div class="sum" id="cSum"></div><p>Ягоды и простой декор входят в цену. Срок — от 2 дней.</p></div><a class="cbtn ac" id="cSend" target="_blank" rel="noopener">Заказать этот торт</a></div>
+ </div></div></section>
+<section class="csec"><div class="cw">
+ <h2 class="ch2 cv">Как заказать</h2><p class="csub cv">Всё решаем в переписке, без звонков, если вам так удобнее.</p>
+ <div class="csteps"><div class="cv"><span>01</span><h3>Напишите нам</h3><p>Расскажите про праздник и пришлите пример дизайна.</p></div><div class="cv"><span>02</span><h3>Предоплата 30%</h3><p>Фиксируем дату, вес и начинку.</p></div><div class="cv"><span>03</span><h3>Самовывоз или доставка</h3><p>Привезём по городу в термобоксе.</p></div></div>
+</div></section>
+<section class="csec calt"><div class="cw">
+ <h2 class="ch2 cv">Отзывы</h2><p class="csub cv">5,0 на Яндекс Картах, 214 оценок.</p>
+ <div class="crev"><figure class="cv"><blockquote>Заказывали торт на юбилей мамы — гости спрашивали, где брали. Не приторный, ягод много.</blockquote><cite>Анастасия</cite></figure><figure class="cv"><blockquote>Бенто-торт с надписью сделали за день. Очень красиво упаковали.</blockquote><cite>Кирилл</cite></figure><figure class="cv"><blockquote>Беру эклеры каждую субботу. Крем как в детстве, тесто хрустит.</blockquote><cite>Ольга</cite></figure></div>
+</div></section>
+<section class="csec"><div class="cw ccont">
+ <div class="cv"><h2 class="ch2">Приходите на кофе</h2><p class="csub" style="margin-bottom:0">Витрина обновляется каждое утро, торты на заказ — по предварительной записи.</p>
+ <dl><dt>Адрес</dt><dd>Нижний Новгород, ул. Примерная, 1</dd><dt>Часы</dt><dd>Ежедневно с 9:00 до 21:00</dd><dt>Телефон</dt><dd><a href="tel:+79000000000">+7 (900) 000-00-00</a></dd></dl>
+ <div class="ccta"><a class="cbtn ac" href="https://wa.me/79000000000" target="_blank" rel="noopener">WhatsApp</a><a class="cbtn" href="https://t.me/username" target="_blank" rel="noopener">Telegram</a><a class="cbtn" href="https://vk.com/" target="_blank" rel="noopener">ВКонтакте</a></div></div>
+ <div class="cmap cv"><iframe src="https://yandex.ru/map-widget/v1/?ll=43.936%2C56.296&z=12" title="Карта" loading="lazy"></iframe></div>
+</div></section>
+<footer class="cfoot"><div class="cw">Кондитерская «Сахар», Нижний Новгород</div></footer>
+<nav class="cbar" id="cBar"><a class="cbtn ac" href="https://wa.me/79000000000" target="_blank" rel="noopener">Заказать торт</a></nav>
+<script>
+(function(){
+var $=function(i){return document.getElementById(i)},wa="https://wa.me/79000000000?text=";
+var picked=[];
+$("cMenu").addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;var n=b.dataset.n,i=picked.indexOf(n);
+ if(i<0){picked.push(n);b.classList.add("on");b.textContent="✓ В заказе"}else{picked.splice(i,1);b.classList.remove("on");b.textContent="В заказ"}upd()});
+function upd(){$("cPicked").textContent=picked.length?"Выбрано: "+picked.length:"";
+ $("cOrder").href=wa+encodeURIComponent(picked.length?"Здравствуйте! Хочу заказать: "+picked.join(", ")+".":"Здравствуйте! Хочу сделать заказ.")}
+upd();
+function pick(g){g.addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;[].forEach.call(g.children,function(x){x.setAttribute("aria-pressed",x===b)});calc()})}
+function sel(g){return g.querySelector('[aria-pressed="true"]')}
+pick($("cKg"));pick($("cFill"));pick($("cTier"));
+function calc(){var kg=sel($("cKg")),f=sel($("cFill")),t=sel($("cTier"));var s=Math.round(+kg.dataset.v*+f.dataset.p*+t.dataset.k/100)*100;
+ $("cSum").textContent=s.toLocaleString("ru-RU")+" ₽";
+ $("cSend").href=wa+encodeURIComponent("Здравствуйте! Хочу торт на заказ: "+kg.dataset.v.replace(".",",")+" кг, начинка «"+f.textContent+"», "+t.textContent.toLowerCase()+". На сайте вышло "+$("cSum").textContent+".")}
+calc();
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}})},{rootMargin:"0px 0px -8% 0px"});
+document.querySelectorAll(".cv").forEach(function(el){io.observe(el)});
+var bar=$("cBar");new IntersectionObserver(function(es){bar.classList.toggle("show",!es[0].isIntersecting)},{threshold:.1}).observe(document.querySelector(".chero"));
+})();
+</script>

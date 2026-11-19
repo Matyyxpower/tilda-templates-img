@@ -1,0 +1,137 @@
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f4efe8;--bg2:#ebe3d8;--paper:#fbf8f4;--ink:#1f2326;--muted:#6b6560;--line:#d9cfc2;--ac:#c56a3a;--f:"Manrope",system-ui,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font:400 17px/1.6 var(--f);overflow-x:hidden}
+img{display:block;max-width:100%}a{color:inherit}
+.rw{width:min(1180px,100% - 40px);margin-inline:auto}
+.rdemo{background:var(--ink);color:#f4efe8;font:500 13px/1.4 var(--f);text-align:center;padding:7px 16px}
+.rtop{padding:20px 0}.rtop .rw{display:flex;justify-content:space-between;align-items:center;gap:16px}
+.rlogo{font:800 22px/1 var(--f);letter-spacing:-.02em;text-decoration:none}.rlogo span{color:var(--ac)}
+.rtop small{display:block;font:500 13px/1.2 var(--f);color:var(--muted);margin-top:4px}
+.rphone{font:700 16px/1 var(--f);text-decoration:none;white-space:nowrap}
+.rbtn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:17px 28px;border-radius:12px;font:700 16px/1 var(--f);text-decoration:none;cursor:pointer;border:1.5px solid var(--ink);background:transparent;color:var(--ink);transition:background .3s,color .3s,transform .15s}
+.rbtn:hover{background:var(--ink);color:var(--paper)}.rbtn:active{transform:scale(.97)}
+.rbtn.ac{background:var(--ac);border-color:var(--ac);color:#fff}.rbtn.ac:hover{background:#a8552b;border-color:#a8552b}
+.rhero{padding:10px 0 90px}.rhero .rw{display:grid;grid-template-columns:1fr 1.15fr;gap:56px;align-items:center}
+.rhero .kind{color:var(--muted);font:600 15px/1.3 var(--f);margin-bottom:18px}
+.rhero h1{font:800 clamp(38px,5vw,66px)/1.05 var(--f);letter-spacing:-.03em;margin-bottom:22px}
+.rhero h1 em{font-style:normal;color:var(--ac)}
+.rhero p.lead{color:var(--muted);max-width:30em;margin-bottom:32px}
+.rcta{display:flex;flex-wrap:wrap;gap:12px}
+.rhero .pic{border-radius:24px;overflow:hidden;aspect-ratio:16/11;box-shadow:0 30px 60px -30px rgba(31,35,38,.5)}
+.rhero .pic img{width:100%;height:100%;object-fit:cover}
+.rstats{display:flex;gap:40px;margin-top:40px}.rstats b{display:block;font:800 34px/1 var(--f)}.rstats span{color:var(--muted);font-size:14px}
+.rsec{padding:100px 0}.ralt{background:var(--bg2)}
+.rh2{font:800 clamp(30px,3.6vw,46px)/1.1 var(--f);letter-spacing:-.02em;margin-bottom:14px}
+.rsub{color:var(--muted);max-width:36em;margin-bottom:48px}
+.rprices{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.rcard{background:var(--paper);border-radius:20px;padding:30px}
+.rcard h3{font:800 22px/1.2 var(--f);margin-bottom:8px}
+.rcard .p{font:800 30px/1 var(--f);color:var(--ac);margin:18px 0 6px}.rcard .p small{font-size:16px;color:var(--muted);font-weight:600}
+.rcard ul{list-style:none;color:var(--muted);font-size:15px}.rcard li{padding:7px 0;border-top:1px solid var(--line)}
+.rba-box{display:grid;grid-template-columns:.8fr 1.2fr;gap:56px;align-items:center}
+.rba{position:relative;aspect-ratio:4/3;border-radius:20px;overflow:hidden;user-select:none;-webkit-user-select:none;touch-action:pan-y;cursor:ew-resize}
+.rba img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none}
+.rba .bef{clip-path:inset(0 calc(100% - var(--x,50%)) 0 0)}
+.rba .h{position:absolute;top:0;bottom:0;left:var(--x,50%);width:3px;margin-left:-1.5px;background:#fff}
+.rba .k{position:absolute;top:50%;left:50%;width:54px;height:54px;border-radius:50%;transform:translate(-50%,-50%);background:var(--ac);color:#fff;display:grid;place-items:center;box-shadow:0 8px 24px rgba(0,0,0,.35)}
+.rba .t{position:absolute;top:14px;padding:6px 12px;border-radius:8px;background:rgba(31,35,38,.7);color:#fff;font:700 13px/1 var(--f)}
+.rba .t.a{right:14px}.rba .t.b{left:14px}
+.rcalc{display:grid;grid-template-columns:1fr 1fr;gap:40px;background:var(--paper);border-radius:24px;padding:40px}
+.rcalc label{display:block;font:700 15px/1.3 var(--f);margin:0 0 12px}
+.rcalc .opts{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px}
+.rcalc .opts button{padding:12px 18px;border-radius:10px;border:1.5px solid var(--line);background:none;font:600 15px/1 var(--f);cursor:pointer;color:var(--ink)}
+.rcalc .opts button[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
+.rcalc input[type=range]{width:100%;accent-color:var(--ac)}
+.rcalc .area{font:800 22px/1 var(--f);margin-top:8px}
+.rres{background:var(--ink);color:#f4efe8;border-radius:18px;padding:32px;display:flex;flex-direction:column;justify-content:space-between;gap:24px}
+.rres .sum{font:800 clamp(34px,4vw,48px)/1 var(--f)}.rres p{color:#b9b2aa;font-size:15px}
+.rgal{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:14px}
+.rgal figure{border-radius:18px;overflow:hidden;aspect-ratio:3/4}.rgal figure:first-child{aspect-ratio:auto}
+.rgal img{width:100%;height:100%;object-fit:cover;transition:transform 1s}.rgal figure:hover img{transform:scale(1.04)}
+.rsteps{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;counter-reset:s}
+.rsteps div{border-top:3px solid var(--ink);padding-top:18px;counter-increment:s}
+.rsteps div::before{content:"0" counter(s);font:800 14px/1 var(--f);color:var(--ac)}
+.rsteps h3{font:800 20px/1.25 var(--f);margin:10px 0 6px}.rsteps p{color:var(--muted);font-size:15px}
+.rrev{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.rrev figure{background:var(--paper);border-radius:20px;padding:28px}
+.rrev blockquote{font:500 17px/1.6 var(--f);margin-bottom:14px}.rrev cite{font-style:normal;color:var(--muted);font-size:14px}
+.rcont{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+.rcont dl{display:grid;grid-template-columns:auto 1fr;gap:10px 24px;margin:30px 0}.rcont dt{color:var(--muted)}
+.rmap{border-radius:20px;overflow:hidden;aspect-ratio:4/3}.rmap iframe{width:100%;height:100%;border:0}
+.rfoot{padding:28px 0;color:var(--muted);font-size:14px;border-top:1px solid var(--line)}
+.rv{opacity:0;transform:translateY(24px);transition:opacity .8s,transform .8s cubic-bezier(.2,.7,.2,1)}.rv.in{opacity:1;transform:none}
+@media (max-width:900px){.rphone{display:none}.rhero .rw,.rba-box,.rcalc,.rcont{grid-template-columns:1fr;gap:30px}.rhero .pic{order:-1}
+.rprices,.rrev{grid-template-columns:1fr}.rsteps{grid-template-columns:1fr 1fr}.rgal{grid-template-columns:1fr 1fr}.rgal figure:first-child{grid-column:span 2;aspect-ratio:16/10}
+.rsec{padding:64px 0}.rcalc{padding:24px}.rstats{gap:24px}.rstats b{font-size:26px}}
+@media (max-width:520px){.rw{width:calc(100% - 32px)}.rcta .rbtn{flex:1}.rsteps{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}}
+</style>
+<div class="rdemo">Шаблон сайта. Название, цены, фото и отзывы указаны для примера.</div>
+<header class="rtop"><div class="rw"><a class="rlogo" href="#">Ровно<span>.</span><small>Ремонт квартир под ключ</small></a><a class="rphone" href="tel:+79000000000">+7 (900) 000-00-00</a></div></header>
+<section class="rhero"><div class="rw">
+ <div><p class="kind">Ремонт квартир в Нижнем Новгороде</p>
+ <h1>Ремонт квартир <em>под ключ</em> по смете, которая не растёт</h1>
+ <p class="lead">Фиксируем цену в договоре до начала работ. Сами закупаем материалы, отчитываемся фото каждую неделю и сдаём в срок.</p>
+ <div class="rcta"><a class="rbtn ac" href="#calc">Рассчитать стоимость</a><a class="rbtn" href="https://wa.me/79000000000" target="_blank" rel="noopener">Написать в WhatsApp</a></div>
+ <div class="rstats"><div><b>12 лет</b><span>делаем ремонт</span></div><div><b>340+</b><span>сданных квартир</span></div><div><b>3 года</b><span>гарантия</span></div></div></div>
+ <div class="pic"><img src="https://cdn.jsdelivr.net/gh/Matyyxpower/tilda-templates-img@main/remont/hero.jpg" alt="Гостиная после ремонта"></div>
+</div></section>
+<section class="rsec ralt"><div class="rw">
+ <h2 class="rh2 rv">Виды ремонта и цены</h2><p class="rsub rv">Цена за квадратный метр работ. Материалы по закупочной цене, чеки прикладываем к отчёту.</p>
+ <div class="rprices">
+  <div class="rcard rv"><h3>Косметический</h3><p style="color:var(--muted)">Обновить квартиру без переделок</p><div class="p">от 4 500 ₽ <small>/ м²</small></div><ul><li>Обои или покраска стен</li><li>Замена напольного покрытия</li><li>Натяжные потолки</li></ul></div>
+  <div class="rcard rv"><h3>Капитальный</h3><p style="color:var(--muted)">Полная замена всего в квартире</p><div class="p">от 9 000 ₽ <small>/ м²</small></div><ul><li>Электрика и сантехника</li><li>Стяжка, выравнивание стен</li><li>Чистовая отделка</li></ul></div>
+  <div class="rcard rv"><h3>Дизайнерский</h3><p style="color:var(--muted)">Ремонт по готовому дизайн-проекту</p><div class="p">от 14 000 ₽ <small>/ м²</small></div><ul><li>Сложные потолки и подсветка</li><li>Мебель на заказ</li><li>Авторский надзор</li></ul></div>
+ </div></div></section>
+<section class="rsec"><div class="rw rba-box">
+ <div class="rv"><h2 class="rh2">Было и стало</h2><p class="rsub" style="margin-bottom:0">Кухня 9 м² в панельном доме: от голого бетона до готовой кухни за 5 недель. Потяните ползунок.</p></div>
+ <div class="rba rv" id="rBa"><img src="https://cdn.jsdelivr.net/gh/Matyyxpower/tilda-templates-img@main/remont/after.jpg" alt="Кухня после ремонта"><img class="bef" src="https://cdn.jsdelivr.net/gh/Matyyxpower/tilda-templates-img@main/remont/before.jpg" alt="Кухня до ремонта"><span class="t b">До</span><span class="t a">После</span><div class="h"><div class="k">⟷</div></div></div>
+</div></section>
+<section class="rsec ralt" id="calc"><div class="rw">
+ <h2 class="rh2 rv">Сколько стоит ваш ремонт</h2><p class="rsub rv">Выберите параметры — покажем примерную стоимость работ. Точную смету составим после бесплатного замера.</p>
+ <div class="rcalc rv">
+  <div><label>Тип ремонта</label><div class="opts" id="rType"><button type="button" data-p="4500" aria-pressed="false">Косметический</button><button type="button" data-p="9000" aria-pressed="true">Капитальный</button><button type="button" data-p="14000" aria-pressed="false">Дизайнерский</button></div>
+  <label>Жильё</label><div class="opts" id="rHome"><button type="button" data-k="1" aria-pressed="true">Новостройка</button><button type="button" data-k="1.15" aria-pressed="false">Вторичка</button></div>
+  <label for="rArea">Площадь квартиры</label><input type="range" id="rArea" min="20" max="150" step="1" value="54"><div class="area" id="rAreaV">54 м²</div></div>
+  <div class="rres"><div><p>Примерная стоимость работ</p><div class="sum" id="rSum"></div><p id="rTerm"></p></div><a class="rbtn ac" id="rSend" target="_blank" rel="noopener">Получить точную смету</a></div>
+ </div></div></section>
+<section class="rsec"><div class="rw">
+ <h2 class="rh2 rv">Наши объекты</h2><p class="rsub rv">Несколько квартир, которые мы сдали в этом году.</p>
+ <div class="rgal rv"><figure><img src="https://cdn.jsdelivr.net/gh/Matyyxpower/tilda-templates-img@main/remont/g2.jpg" alt="Спальня" loading="lazy"></figure><figure><img src="https://cdn.jsdelivr.net/gh/Matyyxpower/tilda-templates-img@main/remont/g1.jpg" alt="Ванная" loading="lazy"></figure><figure><img src="https://cdn.jsdelivr.net/gh/Matyyxpower/tilda-templates-img@main/remont/g3.jpg" alt="Прихожая" loading="lazy"></figure></div>
+</div></section>
+<section class="rsec ralt"><div class="rw">
+ <h2 class="rh2 rv">Как проходит ремонт</h2><p class="rsub rv">Вы всегда знаете, что происходит на объекте.</p>
+ <div class="rsteps"><div class="rv"><h3>Замер</h3><p>Приезжаем бесплатно, обсуждаем пожелания.</p></div><div class="rv"><h3>Смета и договор</h3><p>Фиксируем цену и сроки до начала работ.</p></div><div class="rv"><h3>Ремонт</h3><p>Каждую неделю присылаем фото и отчёт.</p></div><div class="rv"><h3>Сдача</h3><p>Принимаете работу, получаете гарантию 3 года.</p></div></div>
+</div></section>
+<section class="rsec"><div class="rw">
+ <h2 class="rh2 rv">Отзывы</h2><p class="rsub rv">4,9 на Яндекс Картах, 128 оценок.</p>
+ <div class="rrev"><figure class="rv"><blockquote>Делали двушку во вторичке. Смета не выросла ни на рубль, закончили на неделю раньше.</blockquote><cite>Дмитрий, Сормово</cite></figure><figure class="rv"><blockquote>Понравились отчёты: я была в отъезде и всё видела по фото. Ванная получилась как на картинке.</blockquote><cite>Наталья, Верхние Печёры</cite></figure><figure class="rv"><blockquote>Аккуратные мастера, после себя убирают. Через год обратились снова — делать кухню.</blockquote><cite>Игорь, Автозавод</cite></figure></div>
+</div></section>
+<section class="rsec ralt"><div class="rw rcont">
+ <div class="rv"><h2 class="rh2">Запишитесь на бесплатный замер</h2><p class="rsub" style="margin-bottom:0">Приедем в удобное время, всё посчитаем и оставим смету.</p>
+ <dl><dt>Офис</dt><dd>Нижний Новгород, ул. Примерная, 1</dd><dt>Часы</dt><dd>Ежедневно с 9:00 до 20:00</dd><dt>Телефон</dt><dd><a href="tel:+79000000000">+7 (900) 000-00-00</a></dd></dl>
+ <div class="rcta"><a class="rbtn ac" href="https://wa.me/79000000000" target="_blank" rel="noopener">WhatsApp</a><a class="rbtn" href="https://t.me/username" target="_blank" rel="noopener">Telegram</a><a class="rbtn" href="tel:+79000000000">Позвонить</a></div></div>
+ <div class="rmap rv"><iframe src="https://yandex.ru/map-widget/v1/?ll=43.936%2C56.296&z=12" title="Карта" loading="lazy"></iframe></div>
+</div></section>
+<footer class="rfoot"><div class="rw">«Ровно» — ремонт квартир под ключ, Нижний Новгород</div></footer>
+<script>
+(function(){
+var $=function(i){return document.getElementById(i)};
+var ba=$("rBa"),drag=false;function sx(v){ba.style.setProperty("--x",Math.max(0,Math.min(100,v))+"%")}
+function fe(e){var r=ba.getBoundingClientRect();sx((e.clientX-r.left)/r.width*100)}
+ba.addEventListener("pointerdown",function(e){drag=true;ba.setPointerCapture(e.pointerId);fe(e)});ba.addEventListener("pointermove",function(e){if(drag)fe(e)});
+ba.addEventListener("pointerup",function(){drag=false});ba.addEventListener("pointercancel",function(){drag=false});
+function pick(g){g.addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;[].forEach.call(g.children,function(x){x.setAttribute("aria-pressed",x===b)});calc()})}
+pick($("rType"));pick($("rHome"));$("rArea").addEventListener("input",calc);
+function sel(g){return g.querySelector('[aria-pressed="true"]')}
+function calc(){var a=+$("rArea").value,t=sel($("rType")),p=+t.dataset.p*+sel($("rHome")).dataset.k,s=Math.round(a*p/1000)*1000;
+$("rAreaV").textContent=a+" м²";$("rSum").textContent="≈ "+s.toLocaleString("ru-RU")+" ₽";
+var w=Math.max(3,Math.round(a/(p>10000?6:p>6000?9:15)));$("rTerm").textContent="Срок: около "+w+" недель";
+$("rSend").href="https://wa.me/79000000000?text="+encodeURIComponent("Здравствуйте! Хочу смету: "+t.textContent.toLowerCase()+" ремонт, "+a+" м², "+sel($("rHome")).textContent.toLowerCase()+". На сайте вышло "+$("rSum").textContent+".")}
+calc();
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}})},{rootMargin:"0px 0px -8% 0px"});
+document.querySelectorAll(".rv").forEach(function(el){io.observe(el)});
+})();
+</script>

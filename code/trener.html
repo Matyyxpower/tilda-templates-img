@@ -1,0 +1,111 @@
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f6f6f2;--bg2:#ecece6;--paper:#fff;--ink:#111;--muted:#5f5f5a;--line:#dcdcd4;--ac:#c6f432;--h:"Unbounded",system-ui,sans-serif;--f:"Inter",system-ui,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font:400 17px/1.6 var(--f);overflow-x:hidden}
+img{display:block;max-width:100%}a{color:inherit}
+.tw{width:min(1180px,100% - 40px);margin-inline:auto}
+.tdemo{background:var(--ink);color:#fff;font:500 13px/1.4 var(--f);text-align:center;padding:7px 16px}
+.ttop{padding:20px 0}.ttop .tw{display:flex;justify-content:space-between;align-items:center;gap:16px}
+.tlogo{font:700 18px/1.1 var(--h);text-decoration:none}.tlogo small{display:block;font:500 13px/1.2 var(--f);color:var(--muted);margin-top:4px}
+.tnav{display:flex;gap:28px;font:500 15px/1 var(--f)}.tnav a{text-decoration:none}.tnav a:hover{text-decoration:underline}
+.tbtn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:18px 30px;border-radius:999px;font:700 16px/1 var(--f);text-decoration:none;cursor:pointer;border:1.5px solid var(--ink);color:var(--ink);background:transparent;transition:background .3s,color .3s,transform .15s}
+.tbtn:hover{background:var(--ink);color:#fff}.tbtn:active{transform:scale(.97)}
+.tbtn.ac{background:var(--ac);border-color:var(--ac)}.tbtn.ac:hover{background:var(--ink);border-color:var(--ink);color:var(--ac)}
+.thero{padding:20px 0 90px}.thero .tw{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center}
+.thero .tag{display:inline-block;background:var(--ac);padding:8px 14px;border-radius:999px;font:600 14px/1 var(--f);margin-bottom:22px}
+.thero h1{font:700 clamp(36px,4.8vw,64px)/1.05 var(--h);letter-spacing:-.02em;margin-bottom:22px}
+.thero p{color:var(--muted);max-width:29em;margin-bottom:32px;font-size:18px}
+.tcta{display:flex;flex-wrap:wrap;gap:12px}
+.tpic{position:relative;aspect-ratio:4/5;border-radius:28px;overflow:hidden;background:var(--bg2)}
+.tpic img{width:100%;height:100%;object-fit:cover}
+.tpic .st{position:absolute;left:18px;bottom:18px;background:var(--paper);border-radius:18px;padding:16px 20px;box-shadow:0 10px 30px rgba(0,0,0,.12)}
+.tpic .st b{display:block;font:700 26px/1 var(--h)}.tpic .st span{font-size:14px;color:var(--muted)}
+.tsec{padding:100px 0}.talt{background:var(--bg2)}
+.th2{font:700 clamp(28px,3.4vw,44px)/1.1 var(--h);letter-spacing:-.02em;margin-bottom:14px}
+.tsub{color:var(--muted);max-width:36em;margin-bottom:48px}
+.tprog{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.tcard{background:var(--paper);border-radius:24px;padding:32px;display:flex;flex-direction:column;border:1.5px solid transparent;transition:border-color .3s,transform .3s}
+.tcard:hover{border-color:var(--ink);transform:translateY(-4px)}
+.tcard.hot{background:var(--ink);color:#fff}.tcard.hot p,.tcard.hot li{color:#bdbdb6}
+.tcard .lb{align-self:flex-start;background:var(--ac);color:var(--ink);font:600 13px/1 var(--f);padding:7px 12px;border-radius:999px;margin-bottom:16px}
+.tcard h3{font:700 22px/1.2 var(--h);margin-bottom:8px}.tcard p{color:var(--muted);font-size:15px}
+.tcard .pr{font:700 32px/1 var(--h);margin:22px 0 4px}.tcard .pr small{font:500 15px/1 var(--f);color:var(--muted)}
+.tcard ul{list-style:none;margin:16px 0 26px;flex:1}.tcard li{padding:8px 0 8px 26px;position:relative;font-size:15px}
+.tcard li::before{content:"";position:absolute;left:0;top:14px;width:12px;height:12px;border-radius:50%;background:var(--ac)}
+.tabout{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.tabout figure{border-radius:24px;overflow:hidden;aspect-ratio:1}.tabout img{width:100%;height:100%;object-fit:cover}
+.tabout .tx{grid-column:span 2;display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:start;margin-bottom:20px}
+.tabout .tx p{font-size:19px;line-height:1.6}
+.tnums{display:grid;grid-template-columns:1fr 1fr;gap:20px}.tnums b{display:block;font:700 34px/1 var(--h)}.tnums span{color:var(--muted);font-size:14px}
+.tsteps{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;counter-reset:s}
+.tsteps div{background:var(--paper);border-radius:22px;padding:26px;counter-increment:s}
+.tsteps div::before{content:counter(s);display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:var(--ac);font:700 16px/1 var(--h)}
+.tsteps h3{font:700 18px/1.25 var(--h);margin:16px 0 6px}.tsteps p{color:var(--muted);font-size:15px}
+.trev{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.trev figure{background:var(--paper);border-radius:22px;padding:28px}
+.trev .res{display:inline-block;background:var(--ac);font:700 15px/1 var(--f);padding:8px 12px;border-radius:999px;margin-bottom:14px}
+.trev blockquote{font-size:16px;margin-bottom:14px}.trev cite{font-style:normal;color:var(--muted);font-size:14px}
+.tfaq{max-width:820px}.tfaq details{border-bottom:1px solid var(--line);padding:22px 0}
+.tfaq summary{font:700 18px/1.3 var(--h);cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:20px}
+.tfaq summary::-webkit-details-marker{display:none}.tfaq summary::after{content:"+";font-size:26px;line-height:.8;transition:transform .3s}
+.tfaq details[open] summary::after{transform:rotate(45deg)}.tfaq p{color:var(--muted);margin-top:12px}
+.tfinal{background:var(--ink);color:#fff;border-radius:32px;padding:clamp(36px,6vw,72px);display:grid;grid-template-columns:1.3fr 1fr;gap:40px;align-items:center}
+.tfinal h2{font:700 clamp(28px,3.6vw,46px)/1.1 var(--h)}.tfinal h2 em{font-style:normal;color:var(--ac)}.tfinal p{color:#bdbdb6;margin-top:14px}
+.tfinal .tcta{justify-content:flex-end}.tfinal .tbtn{border-color:#fff;color:#fff}.tfinal .tbtn.ac{color:var(--ink);border-color:var(--ac)}
+.tfoot{padding:30px 0;color:var(--muted);font-size:14px}
+.tv{opacity:0;transform:translateY(24px);transition:opacity .8s,transform .8s cubic-bezier(.2,.7,.2,1)}.tv.in{opacity:1;transform:none}
+@media (max-width:900px){.tnav{display:none}.thero .tw,.tabout .tx,.tfinal{grid-template-columns:1fr;gap:30px}.tpic{order:-1;aspect-ratio:4/4.3}
+.tprog,.trev{grid-template-columns:1fr}.tsteps{grid-template-columns:1fr 1fr}.tsec{padding:64px 0}.tabout .tx{grid-column:auto}.tabout{grid-template-columns:1fr 1fr}.tabout .tx{grid-column:span 2}.tfinal .tcta{justify-content:flex-start}}
+@media (max-width:520px){.tw{width:calc(100% - 32px)}.tcta .tbtn{flex:1}.tsteps{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){.tv{opacity:1;transform:none;transition:none}}
+</style>
+<div class="tdemo">Шаблон сайта. Имя, цены, фото и отзывы указаны для примера.</div>
+<header class="ttop"><div class="tw"><a class="tlogo" href="#">Алина Морозова<small>Персональный фитнес-тренер</small></a><nav class="tnav"><a href="#prog">Программы</a><a href="#about">Обо мне</a><a href="#faq">Вопросы</a></nav></div></header>
+<section class="thero"><div class="tw">
+ <div><span class="tag">Первая тренировка — бесплатно</span>
+ <h1>Сильное тело без диет и изнурительных тренировок</h1>
+ <p>Персональные тренировки в зале и онлайн. Составлю программу под вашу цель, график и здоровье — и буду рядом, пока не появится результат.</p>
+ <div class="tcta"><a class="tbtn ac" href="https://t.me/username" target="_blank" rel="noopener">Записаться на пробную</a><a class="tbtn" href="#prog">Программы и цены</a></div></div>
+ <div class="tpic"><img id="tHero" src="https://cdn.jsdelivr.net/gh/Matyyxpower/tilda-templates-img@main/trener/hero.jpg" onerror="this.onerror=null;this.src='https://cdn.jsdelivr.net/gh/Matyyxpower/tilda-templates-img@main/trener/work2.jpg'" alt="Тренер Алина"><div class="st"><b>−7 кг</b><span>в среднем за 3 месяца</span></div></div>
+</div></section>
+<section class="tsec talt" id="prog"><div class="tw">
+ <h2 class="th2 tv">Программы</h2><p class="tsub tv">Выберите формат — на первой встрече подберём нагрузку и составим план.</p>
+ <div class="tprog">
+  <div class="tcard tv"><h3>Разовая тренировка</h3><p>Попробовать формат или поставить технику</p><div class="pr">1 800 ₽ <small>/ 60 мин</small></div><ul><li>Тренировка в зале</li><li>Разбор техники упражнений</li><li>Рекомендации по нагрузке</li></ul><a class="tbtn" href="https://t.me/username" target="_blank" rel="noopener">Записаться</a></div>
+  <div class="tcard hot tv"><span class="lb">Выбирают чаще всего</span><h3>Абонемент 12 тренировок</h3><p>Стабильный результат за 1–1,5 месяца</p><div class="pr" style="color:#fff">18 000 ₽ <small>/ 1 500 ₽ за занятие</small></div><ul><li>Программа под вашу цель</li><li>План питания без запретов</li><li>Поддержка в мессенджере</li></ul><a class="tbtn ac" href="https://t.me/username" target="_blank" rel="noopener">Выбрать абонемент</a></div>
+  <div class="tcard tv"><h3>Онлайн-ведение</h3><p>Тренируетесь дома или в своём зале</p><div class="pr">6 000 ₽ <small>/ месяц</small></div><ul><li>Программа на 4 недели</li><li>Видео с техникой упражнений</li><li>Еженедельные созвоны</li></ul><a class="tbtn" href="https://t.me/username" target="_blank" rel="noopener">Начать онлайн</a></div>
+ </div></div></section>
+<section class="tsec" id="about"><div class="tw tabout">
+ <div class="tx"><div class="tv"><h2 class="th2">Привет, я Алина</h2><p>Тренирую 8 лет. Сама прошла путь от «нет времени на спорт» до первого полумарафона. Знаю, как встроить тренировки в жизнь, где работа, дети и дедлайны.</p></div>
+ <div class="tnums tv"><div><b>8 лет</b><span>тренирую</span></div><div><b>400+</b><span>клиентов</span></div><div><b>2</b><span>профильных диплома</span></div><div><b>92%</b><span>продлевают абонемент</span></div></div></div>
+ <figure class="tv"><img src="https://cdn.jsdelivr.net/gh/Matyyxpower/tilda-templates-img@main/trener/work1.jpg" alt="Тренировка с клиенткой" loading="lazy"></figure>
+ <figure class="tv"><img src="https://cdn.jsdelivr.net/gh/Matyyxpower/tilda-templates-img@main/trener/work2.jpg" alt="Составление программы" loading="lazy"></figure>
+</div></section>
+<section class="tsec talt"><div class="tw">
+ <h2 class="th2 tv">Как мы будем работать</h2><p class="tsub tv">Без жёстких запретов и тренировок «через силу».</p>
+ <div class="tsteps"><div class="tv"><h3>Знакомство</h3><p>Бесплатная пробная тренировка и разговор о цели.</p></div><div class="tv"><h3>Программа</h3><p>План тренировок и питания под ваш график.</p></div><div class="tv"><h3>Тренировки</h3><p>Слежу за техникой и постепенно добавляю нагрузку.</p></div><div class="tv"><h3>Результат</h3><p>Замеры раз в месяц — видно, как вы меняетесь.</p></div></div>
+</div></section>
+<section class="tsec"><div class="tw">
+ <h2 class="th2 tv">Результаты клиентов</h2><p class="tsub tv">Отзывы с разрешения — без «до и после» в купальниках.</p>
+ <div class="trev"><figure class="tv"><span class="res">−9 кг за 4 месяца</span><blockquote>Пробовала всё сама — бросала через неделю. С Алиной впервые дошла до конца и не сорвалась.</blockquote><cite>Екатерина, 34 года</cite></figure><figure class="tv"><span class="res">Ушли боли в спине</span><blockquote>Сидячая работа, спина болела каждый день. Через два месяца забыла, что это такое.</blockquote><cite>Марина, 41 год</cite></figure><figure class="tv"><span class="res">Подтянулся 10 раз</span><blockquote>Пришёл с нуля. Онлайн-формат идеально подошёл: тренируюсь дома, Алина всё проверяет по видео.</blockquote><cite>Андрей, 29 лет</cite></figure></div>
+</div></section>
+<section class="tsec talt" id="faq"><div class="tw">
+ <h2 class="th2 tv">Частые вопросы</h2>
+ <div class="tfaq tv">
+  <details><summary>У меня совсем нет подготовки. Мне можно?</summary><p>Да, большинство клиентов приходят с нуля. Нагрузку подбираю под ваш уровень и добавляю постепенно.</p></details>
+  <details><summary>Где проходят тренировки?</summary><p>В зале на ул. Примерной, 1, или онлайн — дома или в любом удобном для вас зале.</p></details>
+  <details><summary>Нужно ли сидеть на диете?</summary><p>Нет. Составлю план питания из привычных продуктов, без голодовок и запретов.</p></details>
+  <details><summary>Что если пропущу тренировку?</summary><p>Предупредите за 12 часов — перенесём без потери занятия.</p></details>
+ </div></div></section>
+<section class="tsec"><div class="tw"><div class="tfinal tv">
+ <div><h2>Первая тренировка — <em>бесплатно</em></h2><p>Познакомимся, оценим вашу форму и составим план. Ни к чему не обязывает.</p></div>
+ <div class="tcta"><a class="tbtn ac" href="https://t.me/username" target="_blank" rel="noopener">Telegram</a><a class="tbtn" href="https://wa.me/79000000000" target="_blank" rel="noopener">WhatsApp</a></div>
+</div></div></section>
+<footer class="tfoot"><div class="tw">Алина Морозова — персональный тренер, Нижний Новгород</div></footer>
+<script>
+(function(){
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}})},{rootMargin:"0px 0px -8% 0px"});
+document.querySelectorAll(".tv").forEach(function(el){io.observe(el)});
+})();
+</script>
