@@ -147,6 +147,11 @@ img{display:block;max-width:100%}a{color:inherit}
 .rfoot .rw>div>a:not(.rlogo){display:block;text-decoration:none;padding:5px 0;font-size:15px}.rfoot a:hover{color:var(--ac)}
 .rovno [id]{scroll-margin-top:90px}
 /* скрытая форма Тильды — через неё заявки уходят в Telegram */
+.rq-res .rovno-shown{grid-column:1/-1}
+.rovno-shown{padding:0!important;margin-top:8px;background:none!important}
+.rovno-shown .t-container,.rovno-shown .t-col{max-width:none!important;width:100%!important;margin:0!important;padding:0!important}
+.rovno-shown .t-section__topwrapper,.rovno-shown .t-input-group{display:none!important}
+.rovno-shown .t-form__submit{text-align:left}.rovno-shown .t-submit{border-radius:12px!important;background:var(--ac)!important;width:100%}
 .rovno-hidden .t-form-success-popup,.rovno-hidden .t-form__successbox{display:none!important}
 .rovno-hidden{position:absolute!important;left:-9999px!important;top:0!important;width:600px!important;height:1px!important;overflow:hidden!important}
 @media (max-width:1100px){.rnav{gap:18px}.rnav a{font-size:14px}.rtop .rphone{display:none}}

@@ -27,7 +27,7 @@ function tForm(){return document.querySelector("form.t-form")}
 function hideT(){var f=tForm();if(f){var r=f.closest(".t-rec");if(r)r.classList.add("rovno-hidden")}}
 hideT();document.addEventListener("DOMContentLoaded",hideT);
 function setV(el,v){if(!el)return;var d=Object.getOwnPropertyDescriptor(el.constructor.prototype,"value");d&&d.set?d.set.call(el,v):el.value=v;el.dispatchEvent(new Event("input",{bubbles:true}));el.dispatchEvent(new Event("change",{bubbles:true}))}
-function send(name,phone,text){return new Promise(function(ok,no){
+function send(name,phone,text,help){return new Promise(function(ok,no){
  var f=tForm();
  if(!f){no("noform");return}
  var q=function(s){return f.querySelector(s)};
@@ -36,11 +36,15 @@ function send(name,phone,text){return new Promise(function(ok,no){
  setV(q('[name="Zayavka"],[name="Заявка"],textarea'),text);
  f.classList.remove("js-send-form-success");
  var btn=f.querySelector(".t-submit,[type=submit]");btn&&btn.click();
- var t0=Date.now(),iv=setInterval(function(){
+ var rec=f.closest(".t-rec"),shown=false,t0=Date.now(),iv=setInterval(function(){
   var sb=f.parentNode.querySelector(".js-successbox"),eb=f.querySelector(".js-errorbox-all");
   var okd=f.classList.contains("js-send-form-success")||(sb&&sb.style.display&&sb.style.display!=="none");
   var errd=eb&&getComputedStyle(eb).display!=="none"&&eb.textContent.trim();
-  if(okd){clearInterval(iv);ok()}else if(errd){clearInterval(iv);no(errd)}else if(Date.now()-t0>20000){clearInterval(iv);no("timeout")}
+  /* Тильда может попросить подтвердить, что это не робот: показываем её форму, уже заполненную */
+  if(!okd&&!shown&&Date.now()-t0>5000&&rec&&help){shown=true;rec.classList.remove("rovno-hidden");rec.classList.add("rovno-shown");help(rec)}
+  if(okd){clearInterval(iv);if(rec){rec.classList.remove("rovno-shown");rec.classList.add("rovno-hidden")}ok()}
+  else if(errd&&!shown){clearInterval(iv);no(errd)}
+  else if(Date.now()-t0>180000){clearInterval(iv);no("timeout")}
  },300)})}
 function digits(s){return(s||"").replace(/\D/g,"")}
 function bindForm(form,build){
@@ -50,7 +54,10 @@ function bindForm(form,build){
   var d=digits(ph.value);if(d.length<10){ph.classList.add("err");msg.className="rq-msg bad";msg.textContent="Проверьте номер телефона";ph.focus();return}
   var text=build(form),nm=form.querySelector('[name="n"]').value.trim();
   b.disabled=true;msg.className="rq-msg";msg.textContent="Отправляем…";
-  send(nm,ph.value.trim(),text).then(function(){
+  send(nm,ph.value.trim(),text,function(rec){
+   form.parentNode.insertBefore(rec,form.nextSibling);var bt=rec.querySelector(".t-btnflex__text,.t-submit");if(bt)bt.textContent="Подтвердить отправку";msg.className="rq-msg";msg.textContent="Почти готово — подтвердите отправку в форме ниже.";
+   rec.scrollIntoView({behavior:"smooth",block:"center"});
+  }).then(function(){
    form.innerHTML='<div class="rq-done"><b>Спасибо'+(nm?", "+nm.replace(/[<>&]/g,""):"")+'!</b><p class="rq-lead">Заявка у нас. Перезвоним в течение 15 минут в рабочее время.</p></div>';
   },function(err){
    b.disabled=false;msg.className="rq-msg bad";
